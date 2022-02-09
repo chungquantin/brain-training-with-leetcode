@@ -1,4 +1,4 @@
-package main
+package queue
 
 import (
 	"fmt"
@@ -23,7 +23,7 @@ func NewQueue(maxLength_ int32) *Queue {
 	}
 }
 
-// Add items into the stack
+// Add items into the queue
 // OVERFLOW: if the stack is full, panic overflow
 // TIME: O(1)
 func (queue *Queue) Enqueue(v interface{}) {
@@ -36,13 +36,13 @@ func (queue *Queue) Enqueue(v interface{}) {
 	queue.pos++
 }
 
-// Remove items from the stack. The items are popped in reserved order
+// Remove items from the queue. The items are popped in reserved order
 // UNDERFLOW: if the stack is empty, panic underflow
 // TIME: O(1)
 func (queue *Queue) Dequeue() interface{} {
 	queue.m.Lock()
 	defer queue.m.Unlock()
-	if len(queue.s) == 0 {
+	if queue.isEmpty() {
 		panic("ERROR: Queue underflow. Can't pop stack")
 	}
 
@@ -53,7 +53,7 @@ func (queue *Queue) Dequeue() interface{} {
 	return rv
 }
 
-// Returns true if the stack is empty
+// Returns true if the queue is empty
 // TIME: O(1)
 func (queue *Queue) isEmpty() bool {
 	return len(queue.s) == 0
@@ -67,7 +67,10 @@ func (queue *Queue) Rear() interface{} {
 	return queue.s[len(queue.s)-1]
 }
 
-func main() {
+//func (queue *Queue) Reverse() *Queue {
+//}
+
+func RunDsQueueTest() {
 	fmt.Println("FILO Stack")
 	queue := NewQueue(10)
 	queue.Enqueue(1)

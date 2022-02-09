@@ -1,4 +1,4 @@
-package main
+package stack
 
 import (
 	"fmt"
@@ -70,7 +70,7 @@ func (stack *Stack) isEmpty() bool {
 	return len(stack.s) == 0
 }
 
-func main() {
+func RunDsStackTest() {
 	fmt.Println("LIFO Stack")
 	stack := NewStack(10)
 	stack.Push(1)

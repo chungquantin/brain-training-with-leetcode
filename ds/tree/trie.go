@@ -1,4 +1,4 @@
-package main
+package tree
 
 import (
 	"fmt"
@@ -62,7 +62,7 @@ func (trie *Trie) Search(word string) bool {
 	return curNode.endOfWord
 }
 
-func main() {
+func RunDsTrieTest() {
 	fmt.Println("Data Structure: Trie...")
 	trie1 := NewTrie()
 	listOfWords := []string{"hello", "helium", "world"}
