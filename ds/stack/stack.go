@@ -31,9 +31,7 @@ func (stack *Stack) Push(v interface{}) {
 	if v == nil {
 		panic("ERROR: Can't push nil into stack")
 	}
-	tempStack := make([]interface{}, 0)
-	tempStack = append(tempStack, v)
-	stack.s = append(tempStack, stack.s...)
+	stack.s = append(stack.s, v)
 	stack.pos++
 }
 
@@ -43,14 +41,15 @@ func (stack *Stack) Push(v interface{}) {
 func (stack *Stack) Pop() interface{} {
 	stack.m.Lock()
 	defer stack.m.Unlock()
-	if len(stack.s) == 0 {
+	if stack.IsEmpty() {
 		panic("ERROR: Stack underflow. Can't pop stack")
 	}
 
 	var rv interface{}
 
-	rv = stack.s[0]
-	stack.s = stack.s[1:]
+	length := len(stack.s) - 1
+	rv = stack.s[length]
+	stack.s = stack.s[:length]
 	stack.pos--
 	return rv
 }
@@ -60,13 +59,16 @@ func (stack *Stack) Pop() interface{} {
 func (stack *Stack) Peek() interface{} {
 	stack.m.Lock()
 	defer stack.m.Unlock()
+	if stack.IsEmpty() {
+		return nil
+	}
 	return stack.s[int32(len(stack.s))-stack.pos]
 
 }
 
 // Returns true if the stack is empty
 // TIME: O(1)
-func (stack *Stack) isEmpty() bool {
+func (stack *Stack) IsEmpty() bool {
 	return len(stack.s) == 0
 }
 
@@ -82,8 +84,13 @@ func RunDsStackTest() {
 	stack.Push(5)
 	fmt.Println(stack.s...)
 
-	poppedValue := stack.Pop()
-	fmt.Println("Popped value: ", poppedValue)
+	fmt.Println("Popped value: ", stack.Pop())
+	fmt.Println(stack.s...)
+	fmt.Println("Popped value: ", stack.Pop())
+	fmt.Println(stack.s...)
+	fmt.Println("Popped value: ", stack.Pop())
+	fmt.Println(stack.s...)
+	fmt.Println("Popped value: ", stack.Pop())
 	fmt.Println(stack.s...)
 
 	topValue := stack.Peek()
