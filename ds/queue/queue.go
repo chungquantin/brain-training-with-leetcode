@@ -60,11 +60,11 @@ func (queue *Queue) isEmpty() bool {
 }
 
 func (queue *Queue) Front() interface{} {
-	return nil
+	return queue.s[0]
 }
 
 func (queue *Queue) Rear() interface{} {
-	return nil
+	return queue.s[len(queue.s)-1]
 }
 
 func main() {
@@ -80,4 +80,7 @@ func main() {
 	dequeuedValue := queue.Dequeue()
 	fmt.Println("Popped value: ", dequeuedValue)
 	fmt.Println(queue.s...)
+
+	fmt.Println("Front: ", queue.Front())
+	fmt.Println("Rear: ", queue.Rear())
 }
