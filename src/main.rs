@@ -66,4 +66,8 @@ fn main() {
         q220::Solution::contains_nearby_almost_duplicate(vec![2147483646, 2147483647], 3, 3),
         true
     );
+    assert_eq!(
+        q220::Solution::contains_nearby_almost_duplicate(vec![-1, 2147483647], 1, 2147483647),
+        false
+    )
 }
