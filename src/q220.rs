@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 pub struct Solution {}
 
 // 220. Contains Duplicate III
@@ -29,6 +30,28 @@ impl Solution {
             i += 1;
         }
         false
+    }
+
+    // TIME: O(n) - SPACE: O(n)
+    // Implement using the bucket sort algorithm
+    pub fn contains_nearby_almost_duplicate_v2(nums: Vec<i32>, k: i32, t: i32) -> bool {
+        // def containsNearbyAlmostDuplicate(self, nums, k, t):
+        // if t < 0: return False
+        // n = len(nums)
+        // d = {}
+        // w = t + 1
+        // for i in xrange(n):
+        //     m = nums[i] / w
+        //     if m in d:
+        //         return True
+        //     if m - 1 in d and abs(nums[i] - d[m - 1]) < w:
+        //         return True
+        //     if m + 1 in d and abs(nums[i] - d[m + 1]) < w:
+        //         return True
+        //     d[m] = nums[i]
+        //     if i >= k: del d[nums[i - k] / w]
+        // return False
+        return false;
     }
 
     fn abs(x: &i32, y: &i32) -> (i32, bool) {
