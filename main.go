@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go-algo/ds/queue"
+	"go-algo/ds/stack"
 )
 
 func main() {
@@ -10,5 +11,6 @@ func main() {
 	fmt.Println("----- Data Structure Test Suite -----")
 
 	queue.RunDsQueueTest()
-	//stack.RunDsStackTest()
+
+	stack.RunDsStackTest()
 }

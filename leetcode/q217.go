@@ -7,7 +7,7 @@ package leetcode
 func containsDuplicate(nums []int) bool {
 	numDuplicateCheck := make(map[int]bool, 0)
 	for _, num := range nums {
-		if numDuplicateCheck[num] == true {
+		if numDuplicateCheck[num] {
 			return true
 		}
 		numDuplicateCheck[num] = true
