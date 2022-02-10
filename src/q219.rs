@@ -16,6 +16,6 @@ impl Solution {
             }
             occur_map.insert(num, i);
         }
-        return false;
+        false
     }
 }

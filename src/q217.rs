@@ -1,4 +1,4 @@
-use std::{collections::HashSet};
+use std::collections::HashSet;
 
 pub struct Solution {}
 impl Solution {
@@ -17,6 +17,6 @@ impl Solution {
     // LEETCODE: RunTime: 23ms - Memory: 3.5MB
     pub fn contains_duplicate_v2(nums: Vec<i32>) -> bool {
         let set: HashSet<i32> = nums.clone().into_iter().collect();
-        return set.len() != nums.clone().len();
+        set.len() != nums.clone().len()
     }
 }

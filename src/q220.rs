@@ -24,13 +24,13 @@ impl Solution {
             }
             i += 1;
         }
-        return false;
+        false
     }
 
     fn abs(x: &i32, y: &i32) -> i32 {
         if x > y {
             return x.saturating_sub(*y);
         }
-        return y.saturating_sub(*x);
+        y.saturating_sub(*x)
     }
 }
