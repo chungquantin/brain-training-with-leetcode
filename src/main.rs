@@ -1,6 +1,7 @@
 // use std::borrow::Borrow;
 use std::collections::HashMap;
 
+mod q121;
 mod q217;
 mod q219;
 mod q220;
@@ -8,10 +9,71 @@ mod q70;
 
 fn main() {
     let mut condition = HashMap::new();
-    condition.insert("q217", true);
-    condition.insert("q219", true);
-    condition.insert("q220", true);
-    condition.insert("q70", true);
+    condition.insert("q70", false);
+    condition.insert("q121", true);
+    condition.insert("q217", false);
+    condition.insert("q219", false);
+    condition.insert("q220", false);
+
+    if *condition.get("q70").unwrap_or(&false) {
+        println!("Question 70 - Climbing Stairs");
+        // 70. Climbing stairs
+        assert_eq!(q70::Solution::climb_stairs(2), 2);
+        assert_eq!(q70::Solution::climb_stairs(3), 3);
+        assert_eq!(q70::Solution::climb_stairs(4), 5);
+        assert_eq!(q70::Solution::climb_stairs(5), 8);
+        assert_eq!(q70::Solution::climb_stairs(6), 13);
+        assert_eq!(q70::Solution::climb_stairs(7), 21);
+        assert_eq!(q70::Solution::climb_stairs(8), 34);
+        assert_eq!(q70::Solution::climb_stairs(9), 55);
+        assert_eq!(q70::Solution::climb_stairs(10), 89);
+        assert_eq!(q70::Solution::climb_stairs(11), 144);
+        assert_eq!(q70::Solution::climb_stairs(12), 233);
+        assert_eq!(q70::Solution::climb_stairs(13), 377);
+        assert_eq!(q70::Solution::climb_stairs(14), 610);
+        assert_eq!(q70::Solution::climb_stairs(15), 987);
+        assert_eq!(q70::Solution::climb_stairs(16), 1597);
+        assert_eq!(q70::Solution::climb_stairs(17), 2584);
+        assert_eq!(q70::Solution::climb_stairs(18), 4181);
+        assert_eq!(q70::Solution::climb_stairs(19), 6765);
+        assert_eq!(q70::Solution::climb_stairs(20), 10946);
+        assert_eq!(q70::Solution::climb_stairs(21), 17711);
+        assert_eq!(q70::Solution::climb_stairs(22), 28657);
+        assert_eq!(q70::Solution::climb_stairs(23), 46368);
+        assert_eq!(q70::Solution::climb_stairs(24), 75025);
+        assert_eq!(q70::Solution::climb_stairs(25), 121393);
+        assert_eq!(q70::Solution::climb_stairs(26), 196418);
+        assert_eq!(q70::Solution::climb_stairs(27), 317811);
+        assert_eq!(q70::Solution::climb_stairs(28), 514229);
+        assert_eq!(q70::Solution::climb_stairs(29), 832040);
+        assert_eq!(q70::Solution::climb_stairs(30), 1346269);
+        assert_eq!(q70::Solution::climb_stairs(31), 2178309);
+        assert_eq!(q70::Solution::climb_stairs(32), 3524578);
+        assert_eq!(q70::Solution::climb_stairs(33), 5702887);
+        assert_eq!(q70::Solution::climb_stairs(34), 9227465);
+        assert_eq!(q70::Solution::climb_stairs(35), 14930352);
+        assert_eq!(q70::Solution::climb_stairs(36), 24157817);
+        assert_eq!(q70::Solution::climb_stairs(37), 39088169);
+        assert_eq!(q70::Solution::climb_stairs(38), 63245986);
+        assert_eq!(q70::Solution::climb_stairs(39), 102334155);
+        assert_eq!(q70::Solution::climb_stairs(40), 165580141);
+        assert_eq!(q70::Solution::climb_stairs(41), 267914296);
+        assert_eq!(q70::Solution::climb_stairs(42), 433494437);
+        assert_eq!(q70::Solution::climb_stairs(43), 701408733);
+        assert_eq!(q70::Solution::climb_stairs(44), 1134903170);
+    }
+
+    if *condition.get("q121").unwrap_or(&false) {
+        println!("Question 121 - Best Time to Buy and Sell Stock");
+        // 121. Best Time to Buy and Sell Stock
+        assert_eq!(q121::Solution::max_profit(vec![7, 1, 5, 3, 6, 4]), 5);
+        assert_eq!(q121::Solution::max_profit(vec![7, 6, 4, 3, 1]), 0);
+        assert_eq!(q121::Solution::max_profit(vec![1, 2, 3, 4, 5]), 4);
+        assert_eq!(q121::Solution::max_profit(vec![7, 6, 5, 4, 3, 2, 1]), 0);
+        assert_eq!(q121::Solution::max_profit(vec![1, 2, 3, 4, 5, 6, 7]), 6);
+        assert_eq!(q121::Solution::max_profit(vec![2, 4, 1]), 2);
+        assert_eq!(q121::Solution::max_profit(vec![2, 1, 2, 1, 0, 1, 2]), 2);
+    }
 
     if *condition.get("q217").unwrap_or(&false) {
         println!("Question 217 - Contains Duplicate");
@@ -87,53 +149,5 @@ fn main() {
             q220::Solution::contains_nearby_almost_duplicate(vec![-1, 2147483647], 1, 2147483647),
             false
         );
-    }
-
-    if *condition.get("q70").unwrap_or(&false) {
-        println!("Question 70 - Climbing Stairs");
-        // 70. Climbing stairs
-        assert_eq!(q70::Solution::climb_stairs(2), 2);
-        assert_eq!(q70::Solution::climb_stairs(3), 3);
-        assert_eq!(q70::Solution::climb_stairs(4), 5);
-        assert_eq!(q70::Solution::climb_stairs(5), 8);
-        assert_eq!(q70::Solution::climb_stairs(6), 13);
-        assert_eq!(q70::Solution::climb_stairs(7), 21);
-        assert_eq!(q70::Solution::climb_stairs(8), 34);
-        assert_eq!(q70::Solution::climb_stairs(9), 55);
-        assert_eq!(q70::Solution::climb_stairs(10), 89);
-        assert_eq!(q70::Solution::climb_stairs(11), 144);
-        assert_eq!(q70::Solution::climb_stairs(12), 233);
-        assert_eq!(q70::Solution::climb_stairs(13), 377);
-        assert_eq!(q70::Solution::climb_stairs(14), 610);
-        assert_eq!(q70::Solution::climb_stairs(15), 987);
-        assert_eq!(q70::Solution::climb_stairs(16), 1597);
-        assert_eq!(q70::Solution::climb_stairs(17), 2584);
-        assert_eq!(q70::Solution::climb_stairs(18), 4181);
-        assert_eq!(q70::Solution::climb_stairs(19), 6765);
-        assert_eq!(q70::Solution::climb_stairs(20), 10946);
-        assert_eq!(q70::Solution::climb_stairs(21), 17711);
-        assert_eq!(q70::Solution::climb_stairs(22), 28657);
-        assert_eq!(q70::Solution::climb_stairs(23), 46368);
-        assert_eq!(q70::Solution::climb_stairs(24), 75025);
-        assert_eq!(q70::Solution::climb_stairs(25), 121393);
-        assert_eq!(q70::Solution::climb_stairs(26), 196418);
-        assert_eq!(q70::Solution::climb_stairs(27), 317811);
-        assert_eq!(q70::Solution::climb_stairs(28), 514229);
-        assert_eq!(q70::Solution::climb_stairs(29), 832040);
-        assert_eq!(q70::Solution::climb_stairs(30), 1346269);
-        assert_eq!(q70::Solution::climb_stairs(31), 2178309);
-        assert_eq!(q70::Solution::climb_stairs(32), 3524578);
-        assert_eq!(q70::Solution::climb_stairs(33), 5702887);
-        assert_eq!(q70::Solution::climb_stairs(34), 9227465);
-        assert_eq!(q70::Solution::climb_stairs(35), 14930352);
-        assert_eq!(q70::Solution::climb_stairs(36), 24157817);
-        assert_eq!(q70::Solution::climb_stairs(37), 39088169);
-        assert_eq!(q70::Solution::climb_stairs(38), 63245986);
-        assert_eq!(q70::Solution::climb_stairs(39), 102334155);
-        assert_eq!(q70::Solution::climb_stairs(40), 165580141);
-        assert_eq!(q70::Solution::climb_stairs(41), 267914296);
-        assert_eq!(q70::Solution::climb_stairs(42), 433494437);
-        assert_eq!(q70::Solution::climb_stairs(43), 701408733);
-        assert_eq!(q70::Solution::climb_stairs(44), 1134903170);
     }
 }
