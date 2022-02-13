@@ -23,7 +23,6 @@ impl Solution {
                 s += 1;
             }
         }
-        println!("Break");
         profit
     }
 }

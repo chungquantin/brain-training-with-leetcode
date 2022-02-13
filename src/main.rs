@@ -5,15 +5,36 @@ mod q121;
 mod q217;
 mod q219;
 mod q220;
+mod q53;
 mod q70;
 
 fn main() {
     let mut condition = HashMap::new();
+    condition.insert("q53", true);
     condition.insert("q70", false);
     condition.insert("q121", true);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
+
+    if *condition.get("q53").unwrap_or(&false) {
+        println!("Question 53 - Maximum SubArray");
+        assert_eq!(
+            q53::Solution::max_sub_array(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4]),
+            6
+        );
+        assert_eq!(q53::Solution::max_sub_array(vec![-1]), -1);
+        assert_eq!(q53::Solution::max_sub_array(vec![-1, -2]), -1);
+        assert_eq!(q53::Solution::max_sub_array(vec![5, 4, -1, 7, 8]), 23);
+        println!("------- Version 2");
+        assert_eq!(
+            q53::Solution::max_sub_array_v2(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4]),
+            6
+        );
+        assert_eq!(q53::Solution::max_sub_array_v2(vec![-1]), -1);
+        assert_eq!(q53::Solution::max_sub_array_v2(vec![-1, -2]), -1);
+        assert_eq!(q53::Solution::max_sub_array_v2(vec![5, 4, -1, 7, 8]), 23);
+    }
 
     if *condition.get("q70").unwrap_or(&false) {
         println!("Question 70 - Climbing Stairs");
