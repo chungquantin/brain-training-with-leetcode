@@ -1,6 +1,7 @@
 // use std::borrow::Borrow;
 use std::collections::HashMap;
 
+#[path ="./ds/linked_list.rs"] mod linked_list;
 mod q121;
 mod q141;
 mod q217;
@@ -18,8 +19,8 @@ fn main() {
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
-    condition.insert("q303", true);
-    condition.insert("q141", true);
+    condition.insert("q303", false);
+    condition.insert("q141", false);
 
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
