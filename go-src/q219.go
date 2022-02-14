@@ -4,7 +4,7 @@ package leetcode
 
 // TIME: O(n)
 // LeetCode: Runtime: 146 ms - Memory: 17.7 MB
-func containsNearbyDuplicate(nums []int, k int) bool {
+func ContainsNearbyDuplicate(nums []int, k int) bool {
 	occurrence := make(map[int]int, 0)
 	exist := make(map[int]bool, 0)
 	for i, num := range nums {

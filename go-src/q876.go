@@ -12,7 +12,7 @@ import linkedlist "go-algo/go-src/ds/linked_list"
  *     Next *ListNode
  * }
  */
-func middleNode(head *linkedlist.ListNode) *linkedlist.ListNode {
+func MiddleNode(head *linkedlist.ListNode) *linkedlist.ListNode {
 	one_step_pointer := head
 	double_step_pointer := head
 	for {

@@ -19,7 +19,7 @@ func containsDuplicate(nums []int) bool {
 
 // TIME: O(n*logn)
 // SPACE: O(1) - We don't need another ds to store the value (Set)
-func containsDuplicateV2(nums []int) bool {
+func ContainsDuplicateV2(nums []int) bool {
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] < nums[j]
 	})

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	leetcode "go-algo/go-src"
 	linkedlist "go-algo/go-src/ds/linked_list"
 	"go-algo/go-src/ds/queue"
 	"go-algo/go-src/ds/stack"
@@ -15,5 +16,7 @@ func main() {
 
 	stack.RunDsStackTest(false)
 
-	linkedlist.RunDsLinkedListTest(true)
+	linkedlist.RunDsLinkedListTest(false)
+
+	leetcode.Run234Test(true)
 }

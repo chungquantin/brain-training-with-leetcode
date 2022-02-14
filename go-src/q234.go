@@ -1,35 +1,49 @@
 package leetcode
 
-import linkedlist "go-algo/go-src/ds/linked_list"
+import (
+	"fmt"
+	linkedlist "go-algo/go-src/ds/linked_list"
+	"go-algo/go-src/ds/stack"
+)
+
+// Using stack
+// TIME: O(2n) - SPACE: O(n)
+// Leetcode: Runtime: 274ms - Memory: 15MB
 
 /**
  * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
  */
-func isPalindrome(head *linkedlist.ListNode) bool {
-	// Scan the linked list to get the length
-	curHead, size := head, 0
+func IsPalindrome(head *linkedlist.ListNode) bool {
+	curHead, newHead := head, head
+	s := stack.NewStack(int32(1<<31 - 1))
 	for {
+		s.Push(curHead.Val)
 		if curHead.Next == nil {
 			break
 		}
 		curHead = curHead.Next
-		size++
 	}
-	if size%2 == 1 {
-		return false
-	}
-	pointer_front, pointer_mid := head, head
-	s, pc := 0, 0
-	// Palindrome Counter
-	for i := 0; i < size; i++ {
-		if s >= size/2 {
-			if pointer_front == pointer_mid {
-				pc += 1
-			}
-			pointer_front = pointer_front.Next
+	for {
+		p := s.Pop()
+		if newHead.Next == nil {
+			break
 		}
-		pointer_mid = pointer_mid.Next
-		s++
+		if p != newHead.Val {
+			return false
+		}
+		newHead = newHead.Next
 	}
-	return pc == size/2
+	return true
+}
+
+func Run234Test(isRunning bool) {
+	if isRunning {
+		ll := &linkedlist.ListNode{}
+		ll.Init([]int32{1})
+		fmt.Println(IsPalindrome(ll))
+	}
 }
