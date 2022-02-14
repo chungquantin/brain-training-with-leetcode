@@ -5,17 +5,19 @@ mod q121;
 mod q217;
 mod q219;
 mod q220;
+mod q303;
 mod q53;
 mod q70;
 
 fn main() {
     let mut condition = HashMap::new();
-    condition.insert("q53", true);
+    condition.insert("q53", false);
     condition.insert("q70", false);
-    condition.insert("q121", true);
+    condition.insert("q121", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
+    condition.insert("q303", true);
 
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
@@ -170,5 +172,13 @@ fn main() {
             q220::Solution::contains_nearby_almost_duplicate(vec![-1, 2147483647], 1, 2147483647),
             false
         );
+    }
+
+    if *condition.get("q303").unwrap_or(&false) {
+        println!("Question 303 - Range Sum Query Immutable");
+        let obj = q303::NumArray::new(vec![-2, 0, 3, -5, 2, -1]);
+        assert_eq!(obj.sum_range(0, 2), 1);
+        assert_eq!(obj.sum_range(2, 5), -1);
+        assert_eq!(obj.sum_range(0, 5), -3);
     }
 }
