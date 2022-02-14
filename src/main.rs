@@ -2,6 +2,7 @@
 use std::collections::HashMap;
 
 mod q121;
+mod q141;
 mod q217;
 mod q219;
 mod q220;
@@ -18,6 +19,7 @@ fn main() {
     condition.insert("q219", false);
     condition.insert("q220", false);
     condition.insert("q303", true);
+    condition.insert("q141", true);
 
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
@@ -96,6 +98,14 @@ fn main() {
         assert_eq!(q121::Solution::max_profit(vec![1, 2, 3, 4, 5, 6, 7]), 6);
         assert_eq!(q121::Solution::max_profit(vec![2, 4, 1]), 2);
         assert_eq!(q121::Solution::max_profit(vec![2, 1, 2, 1, 0, 1, 2]), 2);
+    }
+
+    if *condition.get("q141").unwrap_or(&false) {
+        println!("Question 141 - Linked list cycle");
+        // 141. Linked list cycle
+        let linked_list = q141::ListNode::init(vec![1, 2, 3, 4, 5]);
+
+        assert_eq!(q141::Solution::has_cycle(&linked_list), false)
     }
 
     if *condition.get("q217").unwrap_or(&false) {
