@@ -2,7 +2,7 @@ package queue
 
 import (
 	"fmt"
-	"go-algo/ds/stack"
+	"go-algo/go-src/ds/stack"
 	"sync"
 )
 
@@ -11,7 +11,6 @@ type Queue struct {
 	maxLength int32
 	s         []interface{}
 	pos       int32
-	order     int32
 }
 
 // FIFO
@@ -47,8 +46,7 @@ func (queue *Queue) Dequeue() interface{} {
 		panic("ERROR: Queue underflow. Can't pop stack")
 	}
 
-	var rv interface{}
-	rv = queue.s[0]
+	rv := queue.s[0]
 	queue.s = queue.s[1:]
 	queue.pos--
 	return rv
@@ -93,25 +91,26 @@ func (queue *Queue) Reverse() *Queue {
 		queue.Enqueue(sv)
 	}
 }
-func RunDsQueueTest() {
-	fmt.Println("FIFO Queue")
-	queue := NewQueue(10)
-	queue.Enqueue(1)
-	fmt.Println(queue.s...)
-	queue.Enqueue("Hi")
-	fmt.Println(queue.s...)
-	queue.Enqueue(2)
-	fmt.Println(queue.s...)
+func RunDsQueueTest(isRunning bool) {
+	if isRunning {
+		fmt.Println("FIFO Queue")
+		queue := NewQueue(10)
+		queue.Enqueue(1)
+		fmt.Println(queue.s...)
+		queue.Enqueue("Hi")
+		fmt.Println(queue.s...)
+		queue.Enqueue(2)
+		fmt.Println(queue.s...)
 
-	fmt.Println("Front: ", queue.Front())
-	fmt.Println("Rear: ", queue.Rear())
+		fmt.Println("Front: ", queue.Front())
+		fmt.Println("Rear: ", queue.Rear())
 
-	fmt.Println("Reverse queue: ", queue.Reverse())
-	fmt.Println("Popped value: ", queue.Dequeue())
-	fmt.Println(queue.s...)
-	fmt.Println("Popped value: ", queue.Dequeue())
-	fmt.Println(queue.s...)
-	fmt.Println("Popped value: ", queue.Dequeue())
-	fmt.Println(queue.s...)
-
+		fmt.Println("Reverse queue: ", queue.Reverse())
+		fmt.Println("Popped value: ", queue.Dequeue())
+		fmt.Println(queue.s...)
+		fmt.Println("Popped value: ", queue.Dequeue())
+		fmt.Println(queue.s...)
+		fmt.Println("Popped value: ", queue.Dequeue())
+		fmt.Println(queue.s...)
+	}
 }

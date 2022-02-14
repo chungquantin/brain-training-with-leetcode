@@ -1,5 +1,7 @@
 package leetcode
 
+import linkedlist "go-algo/go-src/ds/linked_list"
+
 // 876. Middle of the linked list
 // Leetcode: Runtime: 0ms - Memory: 1/9MB
 
@@ -10,7 +12,7 @@ package leetcode
  *     Next *ListNode
  * }
  */
-func middleNode(head *ListNode) *ListNode {
+func middleNode(head *linkedlist.ListNode) *linkedlist.ListNode {
 	one_step_pointer := head
 	double_step_pointer := head
 	for {

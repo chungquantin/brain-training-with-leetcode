@@ -72,27 +72,29 @@ func (stack *Stack) IsEmpty() bool {
 	return len(stack.s) == 0
 }
 
-func RunDsStackTest() {
-	fmt.Println("LIFO Stack")
-	stack := NewStack(10)
-	stack.Push(1)
-	fmt.Println(stack.s...)
-	stack.Push("Hi")
-	fmt.Println(stack.s...)
-	stack.Push(2)
-	fmt.Println(stack.s...)
-	stack.Push(5)
-	fmt.Println(stack.s...)
+func RunDsStackTest(isRunning bool) {
+	if isRunning {
+		fmt.Println("LIFO Stack")
+		stack := NewStack(10)
+		stack.Push(1)
+		fmt.Println(stack.s...)
+		stack.Push("Hi")
+		fmt.Println(stack.s...)
+		stack.Push(2)
+		fmt.Println(stack.s...)
+		stack.Push(5)
+		fmt.Println(stack.s...)
 
-	fmt.Println("Popped value: ", stack.Pop())
-	fmt.Println(stack.s...)
-	fmt.Println("Popped value: ", stack.Pop())
-	fmt.Println(stack.s...)
-	fmt.Println("Popped value: ", stack.Pop())
-	fmt.Println(stack.s...)
-	fmt.Println("Popped value: ", stack.Pop())
-	fmt.Println(stack.s...)
+		fmt.Println("Popped value: ", stack.Pop())
+		fmt.Println(stack.s...)
+		fmt.Println("Popped value: ", stack.Pop())
+		fmt.Println(stack.s...)
+		fmt.Println("Popped value: ", stack.Pop())
+		fmt.Println(stack.s...)
+		fmt.Println("Popped value: ", stack.Pop())
+		fmt.Println(stack.s...)
 
-	topValue := stack.Peek()
-	fmt.Println("Top value: ", topValue)
+		topValue := stack.Peek()
+		fmt.Println("Top value: ", topValue)
+	}
 }

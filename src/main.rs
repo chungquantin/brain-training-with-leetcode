@@ -104,7 +104,7 @@ fn main() {
         println!("Question 141 - Linked list cycle");
         // 141. Linked list cycle
         let linked_list = q141::ListNode::init(vec![1, 2, 3, 4, 5]);
-
+        println!("{:?}", linked_list);
         assert_eq!(q141::Solution::has_cycle(&linked_list), false)
     }
 
