@@ -18,5 +18,5 @@ func main() {
 
 	linkedlist.RunDsLinkedListTest(false)
 
-	leetcode.Run234Test(true)
+	leetcode.Run206Test(true)
 }
