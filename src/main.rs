@@ -1,7 +1,8 @@
 // use std::borrow::Borrow;
-use std::collections::HashMap;
+use std::{collections::HashMap, vec};
 
-#[path ="./ds/linked_list.rs"] mod linked_list;
+#[path = "./ds/linked_list.rs"]
+mod linked_list;
 mod q121;
 mod q141;
 mod q217;
@@ -104,8 +105,13 @@ fn main() {
     if *condition.get("q141").unwrap_or(&false) {
         println!("Question 141 - Linked list cycle");
         // 141. Linked list cycle
-        let linked_list = q141::ListNode::init(vec![1, 2, 3, 4, 5]);
+        let linked_list = &mut q141::ListNode::default();
+        linked_list.init(vec![1, 2, 3, 4, 5, 6]);
         assert_eq!(q141::Solution::has_cycle(&linked_list), false)
+    }
+
+    if *condition.get("q203").unwrap_or(&false) {
+        println!("Question 203 - Remove elements from linked list");
     }
 
     if *condition.get("q217").unwrap_or(&false) {
