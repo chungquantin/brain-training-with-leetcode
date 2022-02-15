@@ -36,6 +36,27 @@ func (listNode *ListNode) Insert(value int32) {
 	}
 }
 
+func (listNode *ListNode) Remove(val interface{}) *ListNode {
+	if listNode == nil {
+		return nil
+	}
+	listNode.Next = listNode.Remove(val)
+	if listNode.Val == val {
+		return listNode.Next
+	}
+	return listNode
+}
+
+func (listNode *ListNode) Reverse() *ListNode {
+	var prev *ListNode
+	cur := listNode
+	for cur != nil {
+		prev, cur, cur.Next = cur, cur.Next, prev
+	}
+
+	return prev
+}
+
 func (listNode *ListNode) Info() {
 	curNode := listNode
 	for {

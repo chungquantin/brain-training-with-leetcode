@@ -48,3 +48,12 @@ impl ListNode<i32> {
         }
     }
 }
+
+#[test]
+fn test() {
+    let linked_list = &mut ListNode::<i32>::default();
+    linked_list.init(vec![1,2,3,4,5]);
+    linked_list.insert(6);
+    linked_list.insert(7);
+    linked_list.info();
+}
