@@ -18,5 +18,11 @@ func main() {
 
 	linkedlist.RunDsLinkedListTest(false)
 
-	leetcode.Run206Test(true)
+	// Leetcode testing
+	leetcode.Run21Test(true)
+
+	leetcode.Run206Test(false)
+
+	leetcode.Run234Test(false)
+
 }
