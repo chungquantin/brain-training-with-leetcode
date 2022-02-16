@@ -8,6 +8,7 @@ import (
 type ListNode = linkedlist.ListNode
 
 // Recursive
+// Leetcode: Runtime: 3ms - Memory: 2.6MB
 func RecursiveMergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	if list1 == nil {
 		return list2
@@ -24,6 +25,8 @@ func RecursiveMergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	}
 }
 
+// Iterative
+// Leetcode: Runtime: 0ms - Memory: 2.5MB
 func IterativeMergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	dummy := &ListNode{}
 	p := dummy
