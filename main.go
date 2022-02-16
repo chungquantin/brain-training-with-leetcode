@@ -19,10 +19,11 @@ func main() {
 	linkedlist.RunDsLinkedListTest(false)
 
 	// Leetcode testing
-	leetcode.Run21Test(true)
+	leetcode.Run21Test(false)
 
 	leetcode.Run206Test(false)
 
 	leetcode.Run234Test(false)
 
+	leetcode.Run704Test(true)
 }

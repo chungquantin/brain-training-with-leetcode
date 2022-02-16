@@ -59,8 +59,8 @@ func RunIterativeTest(list1 *ListNode, list2 *ListNode) {
 }
 
 func Run21Test(isRunning bool) {
-	fmt.Println("Q21. Merge two linked list")
 	if isRunning {
+		fmt.Println("Q21. Merge two linked list")
 		list1, list2 := &ListNode{}, &ListNode{}
 		list1.Init([]int32{1, 2, 3, 4, 5, 6})
 		list2.Init([]int32{1, 3, 5, 6})
