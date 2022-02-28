@@ -24,6 +24,16 @@ func (tree *BinaryTree) Insert(value int) *BinaryTree {
 	return tree
 }
 
+func (tree *BinaryTree) Invert(root *TreeNode) *BinaryTree {
+	if tree.root != nil {
+		left, right := tree.root.Left, tree.root.Right
+		tree.root.Left, tree.root.Right = right, left
+		tree.Invert(left)
+		tree.Invert(right)
+	}
+	return tree
+}
+
 func (node *TreeNode) Insert(value int) {
 	if node == nil {
 		node.Val = value
