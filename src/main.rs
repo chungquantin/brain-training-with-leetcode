@@ -11,11 +11,14 @@ mod q220;
 mod q3;
 mod q303;
 mod q53;
+mod q58;
 mod q70;
 
 fn main() {
     let mut condition = HashMap::new();
+    condition.insert("q3", false);
     condition.insert("q53", false);
+    condition.insert("q58", true);
     condition.insert("q70", false);
     condition.insert("q121", false);
     condition.insert("q217", false);
@@ -23,7 +26,6 @@ fn main() {
     condition.insert("q220", false);
     condition.insert("q303", false);
     condition.insert("q141", false);
-    condition.insert("q3", true);
 
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
@@ -203,6 +205,14 @@ fn main() {
     if *condition.get("q3").unwrap_or(&false) {
         println!("Question 3 - Longest Substring Without Repeating Characters");
         assert_eq!(
+            q3::Solution::length_of_longest_substring(String::from("dvdf")),
+            3
+        );
+        assert_eq!(
+            q3::Solution::length_of_longest_substring(String::from("pwfwge")),
+            4
+        );
+        assert_eq!(
             q3::Solution::length_of_longest_substring(String::from("pwwkew")),
             3
         );
@@ -212,7 +222,20 @@ fn main() {
         );
         assert_eq!(
             q3::Solution::length_of_longest_substring(String::from("abfklameqsadonxzvjbasd")),
-            9
+            13
         );
+    }
+
+    if *condition.get("q58").unwrap_or(&false) {
+        println!("Question 58 - Length of last word");
+        assert_eq!(
+            q58::Solution::length_of_last_word(String::from("hello world")),
+            "world".len() as i32
+        );
+
+        assert_eq!(
+            q58::Solution::length_of_last_word(String::from("   fly me   to   the moon  ")),
+            "moon".len() as i32
+        )
     }
 }

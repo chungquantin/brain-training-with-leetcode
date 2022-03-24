@@ -1,4 +1,4 @@
-package tree
+package tree_collection
 
 import (
 	"fmt"
