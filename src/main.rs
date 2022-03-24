@@ -8,6 +8,7 @@ mod q141;
 mod q217;
 mod q219;
 mod q220;
+mod q3;
 mod q303;
 mod q53;
 mod q70;
@@ -22,6 +23,7 @@ fn main() {
     condition.insert("q220", false);
     condition.insert("q303", false);
     condition.insert("q141", false);
+    condition.insert("q3", true);
 
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
@@ -196,5 +198,21 @@ fn main() {
         assert_eq!(obj.sum_range(0, 2), 1);
         assert_eq!(obj.sum_range(2, 5), -1);
         assert_eq!(obj.sum_range(0, 5), -3);
+    }
+
+    if *condition.get("q3").unwrap_or(&false) {
+        println!("Question 3 - Longest Substring Without Repeating Characters");
+        assert_eq!(
+            q3::Solution::length_of_longest_substring(String::from("pwwkew")),
+            3
+        );
+        assert_eq!(
+            q3::Solution::length_of_longest_substring(String::from("abcdabcde")),
+            5
+        );
+        assert_eq!(
+            q3::Solution::length_of_longest_substring(String::from("abfklameqsadonxzvjbasd")),
+            9
+        );
     }
 }
