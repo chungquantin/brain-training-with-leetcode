@@ -3,6 +3,7 @@ use std::{collections::HashMap, vec};
 
 #[path = "./ds/linked_list.rs"]
 mod linked_list;
+mod q1;
 mod q121;
 mod q141;
 mod q217;
@@ -13,19 +14,27 @@ mod q303;
 mod q53;
 mod q58;
 mod q70;
+mod q88;
 
 fn main() {
     let mut condition = HashMap::new();
+    condition.insert("q1", false);
     condition.insert("q3", false);
     condition.insert("q53", false);
-    condition.insert("q58", true);
+    condition.insert("q58", false);
     condition.insert("q70", false);
+    condition.insert("q88", true);
     condition.insert("q121", false);
+    condition.insert("q141", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
     condition.insert("q303", false);
-    condition.insert("q141", false);
+
+    if *condition.get("q1").unwrap_or(&false) {
+        assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
+        assert_eq!(q1::Solution::two_sum(vec![3, 2, 4], 6), vec![1, 2]);
+    }
 
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
@@ -237,5 +246,30 @@ fn main() {
             q58::Solution::length_of_last_word(String::from("   fly me   to   the moon  ")),
             "moon".len() as i32
         )
+    }
+
+    if *condition.get("q88").unwrap_or(&false) {
+        println!("Question 88 - Merged Sorted Array");
+        assert_eq!(
+            q88::Solution::merge(&mut vec![1, 2, 3], 3, &mut vec![2, 5, 6], 3),
+            vec![1, 2, 2, 3, 5, 6]
+        );
+        assert_eq!(
+            q88::Solution::merge(&mut vec![1], 1, &mut vec![], 0),
+            vec![1]
+        );
+        assert_eq!(
+            q88::Solution::merge(&mut vec![1], 1, &mut vec![1, 0], 1),
+            vec![1, 1]
+        );
+        assert_eq!(
+            q88::Solution::merge(
+                &mut vec![1, 2, 3, 3, 3, 6, 10],
+                7,
+                &mut vec![2, 5, 6, 6, 8, 9, 13],
+                7
+            ),
+            vec![1, 2, 2, 3, 3, 3, 5, 6, 6, 6, 8, 9, 10, 13]
+        );
     }
 }
