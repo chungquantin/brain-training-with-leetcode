@@ -11,6 +11,7 @@ mod q219;
 mod q220;
 mod q3;
 mod q303;
+mod q350;
 mod q53;
 mod q58;
 mod q70;
@@ -23,13 +24,14 @@ fn main() {
     condition.insert("q53", false);
     condition.insert("q58", false);
     condition.insert("q70", false);
-    condition.insert("q88", true);
+    condition.insert("q88", false);
     condition.insert("q121", false);
     condition.insert("q141", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
     condition.insert("q303", false);
+    condition.insert("q350", true);
 
     if *condition.get("q1").unwrap_or(&false) {
         assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
@@ -270,6 +272,18 @@ fn main() {
                 7
             ),
             vec![1, 2, 2, 3, 3, 3, 5, 6, 6, 6, 8, 9, 10, 13]
+        );
+    }
+
+    if *condition.get("q350").unwrap_or(&false) {
+        println!("Question 350 - Intersection of Two Arrays II");
+        assert_eq!(
+            q350::Solution::intersect(vec![1, 2, 2, 1], vec![2, 2]),
+            vec![2, 2]
+        );
+        assert_eq!(
+            q350::Solution::intersect(vec![4, 9, 5], vec![9, 4, 9, 8, 4]),
+            vec![4, 9]
         );
     }
 }
