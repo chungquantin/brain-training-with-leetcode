@@ -1,14 +1,14 @@
 package leetcode
 
-func isBadVersion(n int) bool {
+func IsBadVersion(n int) bool {
 			return n % 2 == 0 
 }
-func firstBadVersion(n int) int {
+func FirstBadVersion(n int) int {
 			s, e := 1, n
 			for {
 				if (s < e){
      p := (e+s) / 2
-					if (isBadVersion(p)){
+					if (IsBadVersion(p)){
 						e = p
 					} else {
 						s = p;
