@@ -4,34 +4,41 @@ use std::{collections::HashMap, vec};
 #[path = "./ds/linked_list.rs"]
 mod linked_list;
 mod q1;
+mod q118;
 mod q121;
 mod q141;
+mod q189;
 mod q217;
 mod q219;
 mod q220;
 mod q3;
 mod q303;
+mod q35;
 mod q350;
 mod q53;
+mod q566;
 mod q58;
 mod q70;
 mod q88;
+mod q977;
 
 fn main() {
     let mut condition = HashMap::new();
     condition.insert("q1", false);
     condition.insert("q3", false);
+    condition.insert("q35", true);
     condition.insert("q53", false);
     condition.insert("q58", false);
     condition.insert("q70", false);
     condition.insert("q88", false);
+    condition.insert("q118", false);
     condition.insert("q121", false);
     condition.insert("q141", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
     condition.insert("q303", false);
-    condition.insert("q350", true);
+    condition.insert("q350", false);
 
     if *condition.get("q1").unwrap_or(&false) {
         assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
@@ -285,5 +292,13 @@ fn main() {
             q350::Solution::intersect(vec![4, 9, 5], vec![9, 4, 9, 8, 4]),
             vec![4, 9]
         );
+    }
+
+    if *condition.get("q35").unwrap_or(&false) {
+        println!("Question 35 - Search Insert Position");
+        assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 5), 2);
+        assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 2), 1);
+        assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 7), 4);
+        assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 0), 0);
     }
 }
