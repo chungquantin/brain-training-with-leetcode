@@ -26,12 +26,12 @@ fn main() {
     let mut condition = HashMap::new();
     condition.insert("q1", false);
     condition.insert("q3", false);
-    condition.insert("q35", true);
+    condition.insert("q35", false);
     condition.insert("q53", false);
     condition.insert("q58", false);
     condition.insert("q70", false);
     condition.insert("q88", false);
-    condition.insert("q118", false);
+    condition.insert("q118", true);
     condition.insert("q121", false);
     condition.insert("q141", false);
     condition.insert("q217", false);
@@ -39,7 +39,7 @@ fn main() {
     condition.insert("q220", false);
     condition.insert("q303", false);
     condition.insert("q350", false);
-    condition.insert("q977", true);
+    condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
         assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
@@ -309,5 +309,21 @@ fn main() {
             q977::Solution::sorted_squares(vec![-4, -1, 0, 3, 10]),
             vec![0, 1, 9, 16, 100]
         )
+    }
+
+    if *condition.get("q118").unwrap_or(&false) {
+        println!("Question 118 - Pascal's Triangle");
+        assert_eq!(
+            q118::Solution::generate(5),
+            vec![
+                vec![1],
+                vec![1, 1],
+                vec![1, 2, 1],
+                vec![1, 3, 3, 1],
+                vec![1, 4, 6, 4, 1]
+            ]
+        );
+
+        assert_eq!(q118::Solution::generate(4), vec![vec![1]]);
     }
 }
