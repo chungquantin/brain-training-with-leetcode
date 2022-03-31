@@ -39,6 +39,7 @@ fn main() {
     condition.insert("q220", false);
     condition.insert("q303", false);
     condition.insert("q350", false);
+    condition.insert("q977", true);
 
     if *condition.get("q1").unwrap_or(&false) {
         assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
@@ -300,5 +301,13 @@ fn main() {
         assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 2), 1);
         assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 7), 4);
         assert_eq!(q35::Solution::search_insert(vec![1, 3, 5, 6], 0), 0);
+    }
+
+    if *condition.get("q977").unwrap_or(&false) {
+        println!("Question 977 - Squares of Sorted Array");
+        assert_eq!(
+            q977::Solution::sorted_squares(vec![-4, -1, 0, 3, 10]),
+            vec![0, 1, 9, 16, 100]
+        )
     }
 }
