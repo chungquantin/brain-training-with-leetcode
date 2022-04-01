@@ -11,8 +11,10 @@ mod q189;
 mod q217;
 mod q219;
 mod q220;
+mod q283;
 mod q3;
 mod q303;
+mod q344;
 mod q35;
 mod q350;
 mod q53;
@@ -31,12 +33,13 @@ fn main() {
     condition.insert("q58", false);
     condition.insert("q70", false);
     condition.insert("q88", false);
-    condition.insert("q118", true);
+    condition.insert("q118", false);
     condition.insert("q121", false);
     condition.insert("q141", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
+    condition.insert("q283", true);
     condition.insert("q303", false);
     condition.insert("q350", false);
     condition.insert("q977", false);
@@ -325,5 +328,12 @@ fn main() {
         );
 
         assert_eq!(q118::Solution::generate(4), vec![vec![1]]);
+    }
+
+    if *condition.get("q283").unwrap_or(&false) {
+        println!("Question 283 - Move Zeros");
+        let mut arr1 = vec![0, 1, 0, 3, 12];
+        q283::Solution::move_zeroes(&mut arr1);
+        assert_eq!(arr1, vec![1, 3, 12, 0, 0]);
     }
 }
