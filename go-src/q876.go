@@ -17,10 +17,10 @@ func MiddleNode(head *linkedlist.ListNode) *linkedlist.ListNode {
 	double_step_pointer := head
 	for {
 		if double_step_pointer.Next == nil {
-			one_step_pointer = one_step_pointer.Next
 			break
 		}
 		if double_step_pointer.Next.Next == nil {
+			one_step_pointer = one_step_pointer.Next
 			break
 		}
 		one_step_pointer = one_step_pointer.Next
