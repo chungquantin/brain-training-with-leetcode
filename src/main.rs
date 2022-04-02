@@ -23,6 +23,7 @@ mod q566;
 mod q567;
 mod q58;
 mod q70;
+mod q733;
 mod q88;
 mod q977;
 
@@ -44,7 +45,8 @@ fn main() {
     condition.insert("q283", false);
     condition.insert("q303", false);
     condition.insert("q350", false);
-    condition.insert("q567", true);
+    condition.insert("q567", false);
+    condition.insert("q733", true);
     condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
@@ -379,5 +381,13 @@ fn main() {
             ),
             true
         );
+    }
+
+    if *condition.get("q733").unwrap_or(&false) {
+        println!("Question 733 - Flood Fill");
+        assert_eq!(
+            q733::Solution::flood_fill(vec![vec![0, 0, 0], vec![0, 1, 1]], 1, 1, 1),
+            vec![vec![], vec![]]
+        )
     }
 }
