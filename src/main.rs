@@ -45,8 +45,9 @@ fn main() {
     condition.insert("q283", false);
     condition.insert("q303", false);
     condition.insert("q350", false);
+    condition.insert("q566", true);
     condition.insert("q567", false);
-    condition.insert("q695", true);
+    condition.insert("q695", false);
     condition.insert("q733", false);
     condition.insert("q977", false);
 
@@ -407,5 +408,29 @@ fn main() {
             ]),
             6
         )
+    }
+
+    if *condition.get("q566").unwrap_or(&false) {
+        println!("Question 566 - Reshape the matrix");
+        assert_eq!(
+            q566::Solution::matrix_reshape(vec![vec![1, 2], vec![3, 4]], 1, 4),
+            vec![vec![1, 2, 3, 4]]
+        );
+        assert_eq!(
+            q566::Solution::matrix_reshape(vec![vec![1, 2], vec![3, 4]], 2, 4),
+            vec![vec![1, 2], vec![3, 4]]
+        );
+        assert_eq!(
+            q566::Solution::matrix_reshape(vec![vec![1, 2], vec![3, 4]], 4, 1),
+            vec![vec![1], vec![2], vec![3], vec![4]]
+        );
+        assert_eq!(
+            q566::Solution::matrix_reshape(vec![vec![1, 2]], 1, 1),
+            vec![vec![1, 2]]
+        );
+        assert_eq!(
+            q566::Solution::matrix_reshape(vec![vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], 2, 5),
+            vec![vec![1, 2, 3, 4, 5], vec![6, 7, 8, 9, 10]]
+        );
     }
 }
