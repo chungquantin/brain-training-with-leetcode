@@ -18,11 +18,10 @@ mod q344;
 mod q35;
 mod q350;
 mod q53;
-mod q557;
 mod q566;
 mod q567;
 mod q58;
-mod q617;
+mod q695;
 mod q70;
 mod q733;
 mod q88;
@@ -47,7 +46,8 @@ fn main() {
     condition.insert("q303", false);
     condition.insert("q350", false);
     condition.insert("q567", false);
-    condition.insert("q733", true);
+    condition.insert("q695", true);
+    condition.insert("q733", false);
     condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
@@ -389,6 +389,23 @@ fn main() {
         assert_eq!(
             q733::Solution::flood_fill(vec![vec![0, 0, 0], vec![0, 1, 1]], 1, 1, 1),
             vec![vec![], vec![]]
+        )
+    }
+
+    if *condition.get("q695").unwrap_or(&false) {
+        println!("Question 695 - Max Area of Island");
+        assert_eq!(
+            q695::Solution::max_area_of_island(vec![
+                vec![0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                vec![0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                vec![0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
+                vec![0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0]
+            ]),
+            6
         )
     }
 }
