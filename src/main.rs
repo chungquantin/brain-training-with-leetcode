@@ -26,6 +26,7 @@ mod q70;
 mod q733;
 mod q88;
 mod q977;
+mod q994;
 
 fn main() {
     let mut condition = HashMap::new();
@@ -45,10 +46,11 @@ fn main() {
     condition.insert("q283", false);
     condition.insert("q303", false);
     condition.insert("q350", false);
-    condition.insert("q566", true);
+    condition.insert("q566", false);
     condition.insert("q567", false);
     condition.insert("q695", false);
     condition.insert("q733", false);
+    condition.insert("q994", true);
     condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
@@ -431,6 +433,23 @@ fn main() {
         assert_eq!(
             q566::Solution::matrix_reshape(vec![vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], 2, 5),
             vec![vec![1, 2, 3, 4, 5], vec![6, 7, 8, 9, 10]]
+        );
+    }
+
+    if *condition.get("q994").unwrap_or(&false) {
+        println!("Question 994 - Rotting Oragnes");
+        assert_eq!(
+            q994::Solution::oranges_rotting(vec![vec![2, 1, 1], vec![1, 1, 0], vec![0, 1, 1]]),
+            4
+        );
+        assert_eq!(
+            q994::Solution::oranges_rotting(vec![vec![2, 1, 1], vec![0, 1, 1], vec![1, 0, 1]]),
+            -1
+        );
+        assert_eq!(q994::Solution::oranges_rotting(vec![vec![0, 2]]), 0);
+        assert_eq!(
+            q994::Solution::oranges_rotting(vec![vec![2, 1, 1], vec![1, 1, 1], vec![0, 1, 2]]),
+            2
         );
     }
 }
