@@ -6,6 +6,7 @@ mod linked_list;
 mod q1;
 mod q118;
 mod q121;
+mod q139;
 mod q141;
 mod q189;
 mod q217;
@@ -18,6 +19,7 @@ mod q344;
 mod q35;
 mod q350;
 mod q53;
+mod q542;
 mod q566;
 mod q567;
 mod q58;
@@ -39,6 +41,7 @@ fn main() {
     condition.insert("q88", false);
     condition.insert("q118", false);
     condition.insert("q121", false);
+    condition.insert("q139", true);
     condition.insert("q141", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
@@ -46,11 +49,12 @@ fn main() {
     condition.insert("q283", false);
     condition.insert("q303", false);
     condition.insert("q350", false);
+    condition.insert("q542", false);
     condition.insert("q566", false);
     condition.insert("q567", false);
     condition.insert("q695", false);
     condition.insert("q733", false);
-    condition.insert("q994", true);
+    condition.insert("q994", false);
     condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
@@ -451,5 +455,96 @@ fn main() {
             q994::Solution::oranges_rotting(vec![vec![2, 1, 1], vec![1, 1, 1], vec![0, 1, 2]]),
             2
         );
+    }
+
+    if *condition.get("q542").unwrap_or(&false) {
+        println!("Question 542 - Update Matrix");
+        // Write test case here
+        assert_eq!(
+            q542::Solution::update_matrix(vec![vec![0, 0, 0], vec![0, 1, 0], vec![0, 0, 0]]),
+            vec![vec![0, 0, 0], vec![0, 1, 0], vec![0, 0, 0]]
+        );
+        assert_eq!(
+            q542::Solution::update_matrix(vec![vec![0, 0, 0], vec![0, 1, 0], vec![1, 1, 1]]),
+            vec![vec![0, 0, 0], vec![0, 1, 0], vec![1, 2, 1]]
+        );
+        assert_eq!(
+            q542::Solution::update_matrix(vec![vec![0, 0, 0], vec![0, 1, 1], vec![1, 1, 1]]),
+            vec![vec![0, 0, 0], vec![0, 1, 1], vec![1, 2, 2]]
+        );
+        assert_eq!(
+            q542::Solution::update_matrix(vec![vec![0, 1], vec![1, 1]]),
+            vec![vec![0, 1], vec![1, 2]]
+        );
+        assert_eq!(
+            q542::Solution::update_matrix(vec![vec![1, 1, 0], vec![0, 1, 1], vec![1, 1, 1]]),
+            vec![vec![1, 1, 0], vec![0, 1, 1], vec![1, 2, 2]]
+        );
+
+        assert_eq!(
+            q542::Solution::update_matrix(vec![
+                vec![0, 0, 1, 0, 1, 1, 1, 0, 1, 1],
+                vec![1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+                vec![1, 1, 1, 1, 1, 0, 0, 0, 1, 1],
+                vec![1, 0, 1, 0, 1, 1, 1, 0, 1, 1],
+                vec![0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+                vec![1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                vec![1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
+                vec![0, 1, 0, 0, 0, 1, 0, 0, 1, 1],
+                vec![1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+                vec![1, 0, 1, 1, 1, 0, 1, 1, 1, 0]
+            ]),
+            vec![
+                vec![0, 0, 1, 0, 1, 2, 1, 0, 1, 2],
+                vec![1, 1, 2, 1, 0, 1, 1, 1, 2, 3],
+                vec![2, 1, 2, 1, 1, 0, 0, 0, 1, 2],
+                vec![1, 0, 1, 0, 1, 1, 1, 0, 1, 2],
+                vec![0, 0, 1, 1, 1, 0, 1, 1, 2, 3],
+                vec![1, 0, 1, 2, 1, 1, 1, 2, 1, 2],
+                vec![1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
+                vec![0, 1, 0, 0, 0, 1, 0, 0, 1, 2],
+                vec![1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+                vec![1, 0, 1, 1, 1, 0, 1, 2, 1, 0]
+            ]
+        )
+    }
+
+    if *condition.get("q139").unwrap_or(&false) {
+        println!("Question 139 - Word Break");
+        assert_eq!(
+            q139::Solution::word_break(
+                String::from("leetcode"),
+                vec![String::from("leet"), String::from("code")]
+            ),
+            true
+        );
+        assert_eq!(
+            q139::Solution::word_break(
+                String::from("applepenapple"),
+                vec![
+                    String::from("apple"),
+                    String::from("pen"),
+                    String::from("apple")
+                ]
+            ),
+            true
+        );
+        assert_eq!(
+            q139::Solution::word_break(
+                String::from("catsandog"),
+                vec![
+                    String::from("cats"),
+                    String::from("dog"),
+                    String::from("sand"),
+                    String::from("and"),
+                    String::from("cat")
+                ]
+            ),
+            false
+        );
+        assert_eq!(
+            q139::Solution::word_break(String::from("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"),
+            vec![String::from("a"),String::from("aa"),String::from("aaa"),String::from("aaaa"),String::from("aaaaa"),String::from("aaaaaa"),String::from("aaaaaaa"),String::from("aaaaaaaa"),String::from("aaaaaaaaa"),String::from("aaaaaaaaaa")]),
+        false);
     }
 }
