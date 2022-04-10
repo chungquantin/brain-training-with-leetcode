@@ -1,6 +1,6 @@
-pub struct Knapsack;
+pub struct Solution;
 
-impl Knapsack {
+impl Solution {
  pub fn zero_one_knapsack(values: Vec<i32>, weights: Vec<i32>, w: i32) -> i32 {
   let n = weights.len();
   let mut dp = vec![vec![w as usize + 1; w as usize + 1]; n + 1];

@@ -5,6 +5,7 @@ use std::{collections::HashMap, vec};
 mod linked_list;
 mod others;
 mod q1;
+mod q1143;
 mod q118;
 mod q121;
 mod q139;
