@@ -3,6 +3,7 @@ use std::{collections::HashMap, vec};
 
 #[path = "./ds/linked_list.rs"]
 mod linked_list;
+mod others;
 mod q1;
 mod q118;
 mod q121;
@@ -15,6 +16,7 @@ mod q220;
 mod q283;
 mod q3;
 mod q303;
+mod q322;
 mod q344;
 mod q35;
 mod q350;
@@ -41,13 +43,14 @@ fn main() {
     condition.insert("q88", false);
     condition.insert("q118", false);
     condition.insert("q121", false);
-    condition.insert("q139", true);
+    condition.insert("q139", false);
     condition.insert("q141", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
     condition.insert("q283", false);
     condition.insert("q303", false);
+    condition.insert("q322", true);
     condition.insert("q350", false);
     condition.insert("q542", false);
     condition.insert("q566", false);
@@ -546,5 +549,10 @@ fn main() {
             q139::Solution::word_break(String::from("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"),
             vec![String::from("a"),String::from("aa"),String::from("aaa"),String::from("aaaa"),String::from("aaaaa"),String::from("aaaaaa"),String::from("aaaaaaa"),String::from("aaaaaaaa"),String::from("aaaaaaaaa"),String::from("aaaaaaaaaa")]),
         false);
+    }
+
+    if *condition.get("q322").unwrap_or(&false) {
+        println!("Question 322 - Coin Change");
+        assert_eq!(q322::Solution::coin_change(vec![1, 2, 5], 11), 3);
     }
 }
