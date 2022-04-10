@@ -30,6 +30,7 @@ mod q695;
 mod q70;
 mod q733;
 mod q88;
+mod q921;
 mod q977;
 mod q994;
 
@@ -51,13 +52,14 @@ fn main() {
     condition.insert("q220", false);
     condition.insert("q283", false);
     condition.insert("q303", false);
-    condition.insert("q322", true);
+    condition.insert("q322", false);
     condition.insert("q350", false);
     condition.insert("q542", false);
     condition.insert("q566", false);
     condition.insert("q567", false);
     condition.insert("q695", false);
     condition.insert("q733", false);
+    condition.insert("q921", true);
     condition.insert("q994", false);
     condition.insert("q977", false);
 
@@ -555,5 +557,18 @@ fn main() {
     if *condition.get("q322").unwrap_or(&false) {
         println!("Question 322 - Coin Change");
         assert_eq!(q322::Solution::coin_change(vec![1, 2, 5], 11), 3);
+    }
+
+    if *condition.get("q921").unwrap_or(&false) {
+        println!("Question 921 - Minimum Add to Make Parentheses Valid");
+        assert_eq!(
+            q921::Solution::min_add_to_make_valid(String::from("()))(()")),
+            3
+        );
+        assert_eq!(
+            q921::Solution::min_add_to_make_valid(String::from(")))")),
+            3
+        );
+        assert_eq!(q921::Solution::min_add_to_make_valid(String::from("()")), 0);
     }
 }
