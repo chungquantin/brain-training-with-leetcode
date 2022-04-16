@@ -11,6 +11,7 @@ mod q121;
 mod q139;
 mod q141;
 mod q189;
+mod q1963;
 mod q217;
 mod q219;
 mod q220;
@@ -23,8 +24,10 @@ mod q35;
 mod q350;
 mod q53;
 mod q542;
+mod q56;
 mod q566;
 mod q567;
+mod q57;
 mod q58;
 mod q695;
 mod q70;
@@ -40,6 +43,7 @@ fn main() {
     condition.insert("q3", false);
     condition.insert("q35", false);
     condition.insert("q53", false);
+    condition.insert("q56", true);
     condition.insert("q58", false);
     condition.insert("q70", false);
     condition.insert("q88", false);
@@ -59,7 +63,7 @@ fn main() {
     condition.insert("q567", false);
     condition.insert("q695", false);
     condition.insert("q733", false);
-    condition.insert("q921", true);
+    condition.insert("q921", false);
     condition.insert("q994", false);
     condition.insert("q977", false);
 
@@ -570,5 +574,55 @@ fn main() {
             3
         );
         assert_eq!(q921::Solution::min_add_to_make_valid(String::from("()")), 0);
+    }
+
+    if *condition.get("q56").unwrap_or(&false) {
+        println!("Question 56 - Merge Intervals");
+        assert_eq!(
+            q56::Solution::merge(vec![vec![1, 4], vec![2, 5], vec![7, 9]]),
+            vec![vec![1, 5], vec![7, 9]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![vec![1, 2], vec![2, 5], vec![5, 9]]),
+            vec![vec![1, 9]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![vec![1, 1], vec![2, 5],]),
+            vec![vec![1, 1], vec![2, 5]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![vec![1, 3], vec![2, 6], vec![8, 10], vec![15, 18]]),
+            vec![vec![1, 6], vec![8, 10], vec![15, 18]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![vec![1, 4], vec![0, 4]]),
+            vec![vec![0, 4]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![vec![1, 4], vec![0, 0]]),
+            vec![vec![0, 0], vec![1, 4]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![
+                vec![2, 3],
+                vec![4, 6],
+                vec![6, 7],
+                vec![8, 9],
+                vec![1, 10]
+            ]),
+            vec![vec![1, 10]]
+        );
+        assert_eq!(
+            q56::Solution::merge(vec![
+                vec![2, 3],
+                vec![2, 2],
+                vec![3, 3],
+                vec![1, 3],
+                vec![5, 7],
+                vec![2, 2],
+                vec![4, 6]
+            ]),
+            vec![vec![1, 3], vec![4, 7]]
+        )
     }
 }
