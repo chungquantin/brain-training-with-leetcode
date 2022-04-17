@@ -43,7 +43,8 @@ fn main() {
     condition.insert("q3", false);
     condition.insert("q35", false);
     condition.insert("q53", false);
-    condition.insert("q56", true);
+    condition.insert("q56", false);
+    condition.insert("q57", true);
     condition.insert("q58", false);
     condition.insert("q70", false);
     condition.insert("q88", false);
@@ -624,5 +625,35 @@ fn main() {
             ]),
             vec![vec![1, 3], vec![4, 7]]
         )
+    }
+
+    if *condition.get("q57").unwrap_or(&false) {
+        println!("Question 57 - Insert Intervals");
+        assert_eq!(
+            q57::Solution::insert(vec![vec![1, 3], vec![6, 9]], vec![2, 5]),
+            vec![vec![1, 5], vec![6, 9]]
+        );
+        assert_eq!(
+            q57::Solution::insert(
+                vec![
+                    vec![1, 2],
+                    vec![3, 5],
+                    vec![6, 7],
+                    vec![8, 10],
+                    vec![12, 16]
+                ],
+                vec![4, 8]
+            ),
+            vec![vec![1, 2], vec![3, 10], vec![12, 16]]
+        );
+        assert_eq!(q57::Solution::insert(vec![], vec![5, 7]), vec![vec![5, 7]]);
+        assert_eq!(
+            q57::Solution::insert(vec![vec![1, 1]], vec![5, 7]),
+            vec![vec![1, 1], vec![5, 7]]
+        );
+        assert_eq!(
+            q57::Solution::insert(vec![vec![1, 1], vec![2, 6]], vec![5, 7]),
+            vec![vec![1, 1], vec![2, 7]]
+        );
     }
 }
