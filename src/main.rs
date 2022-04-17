@@ -34,6 +34,7 @@ mod q70;
 mod q733;
 mod q88;
 mod q921;
+mod q973;
 mod q977;
 mod q994;
 
@@ -44,7 +45,7 @@ fn main() {
     condition.insert("q35", false);
     condition.insert("q53", false);
     condition.insert("q56", false);
-    condition.insert("q57", true);
+    condition.insert("q57", false);
     condition.insert("q58", false);
     condition.insert("q70", false);
     condition.insert("q88", false);
@@ -66,6 +67,7 @@ fn main() {
     condition.insert("q733", false);
     condition.insert("q921", false);
     condition.insert("q994", false);
+    condition.insert("q973", true);
     condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
@@ -654,6 +656,47 @@ fn main() {
         assert_eq!(
             q57::Solution::insert(vec![vec![1, 1], vec![2, 6]], vec![5, 7]),
             vec![vec![1, 1], vec![2, 7]]
+        );
+    }
+
+    if *condition.get("q973").unwrap_or(&false) {
+        println!("Question 973 - K Closest Points to Origin");
+        // assert_eq!(
+        //     q973::Solution::k_closest(vec![vec![1, 3], vec![-2, 2]], 1),
+        //     vec![vec![-2, 2]]
+        // );
+        // assert_eq!(
+        //     q973::Solution::k_closest(vec![vec![3, 3], vec![5, -1], vec![-2, 4]], 2),
+        //     vec![vec![3, 3], vec![-2, 4]]
+        // );
+        // assert_eq!(
+        //     q973::Solution::k_closest(vec![vec![6, 10], vec![-3, 3], vec![-2, 5], vec![0, 2]], 3),
+        //     vec![vec![0, 2], vec![-3, 3], vec![-2, 5]]
+        // );
+        assert_eq!(
+            q973::Solution::k_closest(
+                vec![
+                    vec![-95, 76],
+                    vec![17, 7],
+                    vec![-55, -58],
+                    vec![53, 20],
+                    vec![-69, -8],
+                    vec![-57, 87],
+                    vec![-2, -42],
+                    vec![-10, -87],
+                    vec![-36, -57],
+                    vec![97, -39],
+                    vec![97, 49]
+                ],
+                5
+            ),
+            vec![
+                vec![17, 7],
+                vec![-2, -42],
+                vec![53, 20],
+                vec![-36, -57],
+                vec![-69, -8]
+            ]
         );
     }
 }
