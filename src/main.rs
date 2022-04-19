@@ -15,6 +15,7 @@ mod q1963;
 mod q217;
 mod q219;
 mod q220;
+mod q232;
 mod q283;
 mod q3;
 mod q303;
@@ -22,6 +23,7 @@ mod q322;
 mod q344;
 mod q35;
 mod q350;
+mod q383;
 mod q53;
 mod q542;
 mod q56;
@@ -60,6 +62,7 @@ fn main() {
     condition.insert("q303", false);
     condition.insert("q322", false);
     condition.insert("q350", false);
+    condition.insert("q383", true);
     condition.insert("q542", false);
     condition.insert("q566", false);
     condition.insert("q567", false);
@@ -67,7 +70,7 @@ fn main() {
     condition.insert("q733", false);
     condition.insert("q921", false);
     condition.insert("q994", false);
-    condition.insert("q973", true);
+    condition.insert("q973", false);
     condition.insert("q977", false);
 
     if *condition.get("q1").unwrap_or(&false) {
@@ -698,5 +701,16 @@ fn main() {
                 vec![-69, -8]
             ]
         );
+    }
+
+    if *condition.get("q383").unwrap_or(&false) {
+        println!("Question 383 - Ransom Note");
+        assert_eq!(
+            q383::Solution::can_construct(
+                String::from("bg"),
+                String::from("efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj")
+            ),
+            true
+        )
     }
 }
