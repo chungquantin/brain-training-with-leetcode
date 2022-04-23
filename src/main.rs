@@ -14,6 +14,7 @@ mod q15;
 mod q150;
 mod q189;
 mod q1963;
+mod q208;
 mod q217;
 mod q219;
 mod q220;
@@ -58,7 +59,7 @@ fn main() {
     condition.insert("q121", false);
     condition.insert("q139", false);
     condition.insert("q141", false);
-    condition.insert("q150", true);
+    condition.insert("q150", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
