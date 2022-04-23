@@ -24,7 +24,6 @@ impl Solution {
     occurence_ransom.insert(c, 1);
    }
   }
-  println!("{:?} {:?}", occurence_magazine, occurence_ransom);
   for key in occurence_ransom.keys() {
    let opt_mag = occurence_magazine.get(key);
    if opt_mag.is_none() || occurence_ransom.get(key).unwrap() > opt_mag.unwrap() {

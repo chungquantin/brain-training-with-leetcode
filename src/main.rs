@@ -10,6 +10,7 @@ mod q118;
 mod q121;
 mod q139;
 mod q141;
+mod q15;
 mod q189;
 mod q1963;
 mod q217;
@@ -44,6 +45,7 @@ fn main() {
     let mut condition = HashMap::new();
     condition.insert("q1", false);
     condition.insert("q3", false);
+    condition.insert("q15", true);
     condition.insert("q35", false);
     condition.insert("q53", false);
     condition.insert("q56", false);
@@ -62,7 +64,7 @@ fn main() {
     condition.insert("q303", false);
     condition.insert("q322", false);
     condition.insert("q350", false);
-    condition.insert("q383", true);
+    condition.insert("q383", false);
     condition.insert("q542", false);
     condition.insert("q566", false);
     condition.insert("q567", false);
@@ -712,5 +714,14 @@ fn main() {
             ),
             true
         )
+    }
+
+    if *condition.get("q15").unwrap_or(&false) {
+        println!("Question 15 - 3Sum");
+        assert_eq!(
+            q15::Solution::three_sum(vec![-1, 0, 1, 2, -1, 4]),
+            vec![vec![-1, -1, 2], vec![-1, 0, 1]]
+        );
+        assert_eq!(q15::Solution::three_sum(vec![1, 2, -2, 1]), vec![vec![]]);
     }
 }
