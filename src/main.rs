@@ -11,6 +11,7 @@ mod q121;
 mod q139;
 mod q141;
 mod q15;
+mod q150;
 mod q189;
 mod q1963;
 mod q217;
@@ -45,7 +46,7 @@ fn main() {
     let mut condition = HashMap::new();
     condition.insert("q1", false);
     condition.insert("q3", false);
-    condition.insert("q15", true);
+    condition.insert("q15", false);
     condition.insert("q35", false);
     condition.insert("q53", false);
     condition.insert("q56", false);
@@ -57,6 +58,7 @@ fn main() {
     condition.insert("q121", false);
     condition.insert("q139", false);
     condition.insert("q141", false);
+    condition.insert("q150", true);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
@@ -723,5 +725,65 @@ fn main() {
             vec![vec![-1, -1, 2], vec![-1, 0, 1]]
         );
         assert_eq!(q15::Solution::three_sum(vec![1, 2, -2, 1]), vec![vec![]]);
+    }
+
+    if *condition.get("q150").unwrap_or(&false) {
+        println!("Question 150 - Evaluate Reverse Polish Notation");
+        assert_eq!(
+            q150::Solution::eval_rpn(vec!["1".to_string(), "2".to_string(), "+".to_string()]),
+            3
+        );
+        assert_eq!(
+            q150::Solution::eval_rpn(vec![
+                "2".to_string(),
+                "1".to_string(),
+                "+".to_string(),
+                "3".to_string(),
+                "*".to_string()
+            ]),
+            9
+        );
+        assert_eq!(
+            q150::Solution::eval_rpn(vec![
+                "2".to_string(),
+                "1".to_string(),
+                "+".to_string(),
+                "3".to_string(),
+                "/".to_string()
+            ]),
+            1
+        );
+        assert_eq!(
+            q150::Solution::eval_rpn(vec![
+                "4".to_string(),
+                "13".to_string(),
+                "5".to_string(),
+                "/".to_string(),
+                "+".to_string()
+            ]),
+            6
+        );
+        assert_eq!(
+            q150::Solution::eval_rpn(vec![
+                "-1".to_string(),
+                "1".to_string(),
+                "*".to_string(),
+                "-1".to_string(),
+                "+".to_string()
+            ]),
+            -2
+        );
+        assert_eq!(
+            q150::Solution::eval_rpn(vec![
+                "4".to_string(),
+                "-2".to_string(),
+                "/".to_string(),
+                "2".to_string(),
+                "-3".to_string(),
+                "-".to_string(),
+                "-".to_string()
+            ]),
+            -7
+        );
     }
 }
