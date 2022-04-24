@@ -12,8 +12,10 @@ mod q139;
 mod q141;
 mod q15;
 mod q150;
+mod q155;
 mod q189;
 mod q1963;
+mod q200;
 mod q207;
 mod q208;
 mod q217;
@@ -63,11 +65,12 @@ fn main() {
     condition.insert("q139", false);
     condition.insert("q141", false);
     condition.insert("q150", false);
+    condition.insert("q200", true);
     condition.insert("q207", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
-    condition.insert("q238", true);
+    condition.insert("q238", false);
     condition.insert("q283", false);
     condition.insert("q303", false);
     condition.insert("q322", false);
@@ -808,6 +811,30 @@ fn main() {
         assert_eq!(
             q238::Solution::product_except_self(vec![1, 2, 3, 4]),
             vec![24, 12, 8, 6]
+        )
+    }
+
+    if *condition.get("q200").unwrap_or(&false) {
+        println!("Question 200 - Number of Islands");
+
+        assert_eq!(
+            q200::Solution::num_islands(vec![
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '0', '0', '0'],
+                vec!['0', '0', '0', '0', '0']
+            ]),
+            1
+        );
+
+        assert_eq!(
+            q200::Solution::num_islands(vec![
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '1', '0', '1'],
+                vec!['1', '1', '0', '0', '0'],
+                vec!['0', '0', '0', '1', '1']
+            ]),
+            3
         )
     }
 }
