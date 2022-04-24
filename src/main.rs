@@ -14,6 +14,7 @@ mod q15;
 mod q150;
 mod q189;
 mod q1963;
+mod q207;
 mod q208;
 mod q217;
 mod q219;
@@ -60,6 +61,7 @@ fn main() {
     condition.insert("q139", false);
     condition.insert("q141", false);
     condition.insert("q150", false);
+    condition.insert("q207", true);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
@@ -786,5 +788,14 @@ fn main() {
             ]),
             -7
         );
+    }
+
+    if *condition.get("q207").unwrap_or(&false) {
+        println!("Question 207 - Course Schedule");
+        assert_eq!(
+            q207::Solution::can_finish(2, vec![vec![1, 0], vec![0, 1]]),
+            false
+        );
+        assert_eq!(q207::Solution::can_finish(2, vec![vec![1, 0]]), true);
     }
 }
