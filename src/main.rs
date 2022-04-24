@@ -20,6 +20,7 @@ mod q217;
 mod q219;
 mod q220;
 mod q232;
+mod q238;
 mod q283;
 mod q3;
 mod q303;
@@ -61,10 +62,11 @@ fn main() {
     condition.insert("q139", false);
     condition.insert("q141", false);
     condition.insert("q150", false);
-    condition.insert("q207", true);
+    condition.insert("q207", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
     condition.insert("q220", false);
+    condition.insert("q238", true);
     condition.insert("q283", false);
     condition.insert("q303", false);
     condition.insert("q322", false);
@@ -797,5 +799,14 @@ fn main() {
             false
         );
         assert_eq!(q207::Solution::can_finish(2, vec![vec![1, 0]]), true);
+    }
+
+    if *condition.get("q238").unwrap_or(&false) {
+        println!("Question 238 - Product of Array Except Self");
+
+        assert_eq!(
+            q238::Solution::product_except_self(vec![1, 2, 3, 4]),
+            vec![24, 12, 8, 6]
+        )
     }
 }
