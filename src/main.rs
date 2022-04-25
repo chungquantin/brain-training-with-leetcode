@@ -818,23 +818,33 @@ fn main() {
         println!("Question 200 - Number of Islands");
 
         assert_eq!(
-            q200::Solution::num_islands(vec![
+            q200::DFSSolution::num_islands(vec![
                 vec!['1', '1', '1', '1', '0'],
                 vec!['1', '1', '1', '1', '0'],
                 vec!['1', '1', '0', '0', '0'],
                 vec!['0', '0', '0', '0', '0']
             ]),
-            1
+            q200::BFSSolution::num_islands(vec![
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '0', '0', '0'],
+                vec!['0', '0', '0', '0', '0']
+            ]),
         );
 
         assert_eq!(
-            q200::Solution::num_islands(vec![
+            q200::DFSSolution::num_islands(vec![
                 vec!['1', '1', '1', '1', '0'],
                 vec!['1', '1', '1', '0', '1'],
                 vec!['1', '1', '0', '0', '0'],
                 vec!['0', '0', '0', '1', '1']
             ]),
-            3
+            q200::BFSSolution::num_islands(vec![
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '1', '0', '1'],
+                vec!['1', '1', '0', '0', '0'],
+                vec!['0', '0', '0', '1', '1']
+            ]),
         )
     }
 }
