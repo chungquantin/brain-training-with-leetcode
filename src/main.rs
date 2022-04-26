@@ -27,6 +27,7 @@ mod q283;
 mod q3;
 mod q303;
 mod q322;
+mod q33;
 mod q344;
 mod q35;
 mod q350;
@@ -53,6 +54,7 @@ fn main() {
     condition.insert("q1", false);
     condition.insert("q3", false);
     condition.insert("q15", false);
+    condition.insert("q33", true);
     condition.insert("q35", false);
     condition.insert("q53", false);
     condition.insert("q56", false);
@@ -65,7 +67,7 @@ fn main() {
     condition.insert("q139", false);
     condition.insert("q141", false);
     condition.insert("q150", false);
-    condition.insert("q200", true);
+    condition.insert("q200", false);
     condition.insert("q207", false);
     condition.insert("q217", false);
     condition.insert("q219", false);
@@ -846,5 +848,11 @@ fn main() {
                 vec!['0', '0', '0', '1', '1']
             ]),
         )
+    }
+
+    if *condition.get("q33").unwrap_or(&false) {
+        println!("Question 33 - Search in Rotated Sorted Array");
+
+        assert_eq!(q33::Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 0), 4)
     }
 }
