@@ -32,7 +32,9 @@ mod q344;
 mod q35;
 mod q350;
 mod q383;
+mod q39;
 mod q409;
+mod q417;
 mod q53;
 mod q542;
 mod q56;
@@ -54,7 +56,7 @@ fn main() {
     condition.insert("q1", false);
     condition.insert("q3", false);
     condition.insert("q15", false);
-    condition.insert("q33", true);
+    condition.insert("q33", false);
     condition.insert("q35", false);
     condition.insert("q53", false);
     condition.insert("q56", false);
@@ -78,6 +80,7 @@ fn main() {
     condition.insert("q322", false);
     condition.insert("q350", false);
     condition.insert("q383", false);
+    condition.insert("q417", true);
     condition.insert("q542", false);
     condition.insert("q566", false);
     condition.insert("q567", false);
@@ -854,5 +857,20 @@ fn main() {
         println!("Question 33 - Search in Rotated Sorted Array");
 
         assert_eq!(q33::Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 0), 4)
+    }
+
+    if *condition.get("q417").unwrap_or(&false) {
+        println!("Question 417 - Pacific Alantic Water Flow");
+
+        assert_eq!(
+            q417::Solution::pacific_atlantic(vec![
+                vec![1, 2, 2, 3, 5],
+                vec![3, 2, 3, 4, 4],
+                vec![2, 4, 5, 3, 1],
+                vec![6, 7, 1, 4, 5],
+                vec![5, 1, 1, 2, 4]
+            ]),
+            vec![[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
+        )
     }
 }
