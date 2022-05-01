@@ -37,6 +37,7 @@ mod q409;
 mod q417;
 mod q46;
 mod q47;
+mod q51;
 mod q53;
 mod q542;
 mod q56;
@@ -57,48 +58,49 @@ mod q994;
 
 fn main() {
     let mut condition = HashMap::new();
-    condition.insert("q1", false);
-    condition.insert("q3", false);
-    condition.insert("q15", false);
-    condition.insert("q33", false);
-    condition.insert("q35", false);
-    condition.insert("q39", false);
-    condition.insert("q46", false);
-    condition.insert("q47", true);
-    condition.insert("q53", false);
-    condition.insert("q56", false);
-    condition.insert("q57", false);
-    condition.insert("q58", false);
-    condition.insert("q70", false);
-    condition.insert("q78", false);
-    condition.insert("q88", false);
-    condition.insert("q90", false);
-    condition.insert("q118", false);
-    condition.insert("q121", false);
-    condition.insert("q139", false);
-    condition.insert("q141", false);
-    condition.insert("q150", false);
-    condition.insert("q200", false);
-    condition.insert("q207", false);
-    condition.insert("q217", false);
-    condition.insert("q219", false);
-    condition.insert("q220", false);
-    condition.insert("q238", false);
-    condition.insert("q283", false);
-    condition.insert("q303", false);
-    condition.insert("q322", false);
-    condition.insert("q350", false);
-    condition.insert("q383", false);
-    condition.insert("q417", false);
-    condition.insert("q542", false);
-    condition.insert("q566", false);
-    condition.insert("q567", false);
-    condition.insert("q695", false);
-    condition.insert("q733", false);
-    condition.insert("q921", false);
-    condition.insert("q994", false);
-    condition.insert("q973", false);
-    condition.insert("q977", false);
+    let (run_this_test, no) = (true, false);
+    condition.insert("q1", no);
+    condition.insert("q3", no);
+    condition.insert("q15", no);
+    condition.insert("q33", no);
+    condition.insert("q35", no);
+    condition.insert("q39", run_this_test);
+    condition.insert("q46", no);
+    condition.insert("q47", no);
+    condition.insert("q53", no);
+    condition.insert("q56", no);
+    condition.insert("q57", no);
+    condition.insert("q58", no);
+    condition.insert("q70", no);
+    condition.insert("q78", no);
+    condition.insert("q88", no);
+    condition.insert("q90", no);
+    condition.insert("q118", no);
+    condition.insert("q121", no);
+    condition.insert("q139", no);
+    condition.insert("q141", no);
+    condition.insert("q150", no);
+    condition.insert("q200", no);
+    condition.insert("q207", no);
+    condition.insert("q217", no);
+    condition.insert("q219", no);
+    condition.insert("q220", no);
+    condition.insert("q238", no);
+    condition.insert("q283", no);
+    condition.insert("q303", no);
+    condition.insert("q322", no);
+    condition.insert("q350", no);
+    condition.insert("q383", no);
+    condition.insert("q417", no);
+    condition.insert("q542", no);
+    condition.insert("q566", no);
+    condition.insert("q567", no);
+    condition.insert("q695", no);
+    condition.insert("q733", no);
+    condition.insert("q921", no);
+    condition.insert("q994", no);
+    condition.insert("q973", no);
+    condition.insert("q977", no);
 
     if *condition.get("q1").unwrap_or(&false) {
         assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
@@ -947,7 +949,11 @@ fn main() {
     if *condition.get("q39").unwrap_or(&false) {
         println!("Question 39 - Combination Sum");
         assert_eq!(
-            q39::Solution::combination_sum(vec![2, 3, 6, 7], 6),
+            q39::Solution::combination_sum(vec![2, 3, 5], 8),
+            vec![vec![2, 2, 2, 2], vec![2, 3, 3], vec![3, 5]]
+        );
+        assert_eq!(
+            q39::Solution::combination_sum(vec![2, 3, 6, 7], 7),
             vec![vec![2, 2, 3], vec![7]]
         )
     }
