@@ -35,6 +35,8 @@ mod q383;
 mod q39;
 mod q409;
 mod q417;
+mod q46;
+mod q47;
 mod q53;
 mod q542;
 mod q56;
@@ -45,7 +47,9 @@ mod q58;
 mod q695;
 mod q70;
 mod q733;
+mod q78;
 mod q88;
+mod q90;
 mod q921;
 mod q973;
 mod q977;
@@ -58,12 +62,17 @@ fn main() {
     condition.insert("q15", false);
     condition.insert("q33", false);
     condition.insert("q35", false);
+    condition.insert("q39", false);
+    condition.insert("q46", false);
+    condition.insert("q47", true);
     condition.insert("q53", false);
     condition.insert("q56", false);
     condition.insert("q57", false);
     condition.insert("q58", false);
     condition.insert("q70", false);
+    condition.insert("q78", false);
     condition.insert("q88", false);
+    condition.insert("q90", false);
     condition.insert("q118", false);
     condition.insert("q121", false);
     condition.insert("q139", false);
@@ -80,7 +89,7 @@ fn main() {
     condition.insert("q322", false);
     condition.insert("q350", false);
     condition.insert("q383", false);
-    condition.insert("q417", true);
+    condition.insert("q417", false);
     condition.insert("q542", false);
     condition.insert("q566", false);
     condition.insert("q567", false);
@@ -871,6 +880,75 @@ fn main() {
                 vec![5, 1, 1, 2, 4]
             ]),
             vec![[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
+        )
+    }
+
+    if *condition.get("q90").unwrap_or(&false) {
+        println!("Question 90 = Subsets II");
+        assert_eq!(
+            q90::Solution::subsets_with_dup(vec![1, 2, 2]),
+            vec![
+                vec![],
+                vec![1],
+                vec![2],
+                vec![1, 2],
+                vec![2, 2],
+                vec![1, 2, 2]
+            ]
+        );
+    }
+
+    if *condition.get("q46").unwrap_or(&false) {
+        println!("Question 46 - Permutations");
+
+        assert_eq!(
+            q46::Solution::permute(vec![1, 2, 3]),
+            vec![
+                vec![1, 2, 3],
+                vec![1, 3, 2],
+                vec![2, 1, 3],
+                vec![2, 3, 1],
+                vec![3, 1, 2],
+                vec![3, 2, 1]
+            ]
+        );
+    }
+
+    if *condition.get("q47").unwrap_or(&false) {
+        println!("Question 47 - Permutations II (contains duplicate)");
+
+        assert_eq!(
+            q47::Solution::permute_unique(vec![1, 1, 2]),
+            vec![vec![1, 1, 2], vec![1, 2, 1], vec![2, 1, 1]]
+        );
+    }
+
+    if *condition.get("q78").unwrap_or(&false) {
+        println!("Question 78 = Subsets");
+        assert_eq!(
+            q78::Solution::subsets(vec![1, 2]),
+            vec![vec![], vec![1], vec![2], vec![1, 2]]
+        );
+        assert_eq!(
+            q78::Solution::subsets(vec![1, 2, 3]),
+            vec![
+                vec![],
+                vec![1],
+                vec![2],
+                vec![1, 2],
+                vec![3],
+                vec![1, 3],
+                vec![2, 3],
+                vec![1, 2, 3]
+            ]
+        )
+    }
+
+    if *condition.get("q39").unwrap_or(&false) {
+        println!("Question 39 - Combination Sum");
+        assert_eq!(
+            q39::Solution::combination_sum(vec![2, 3, 6, 7], 6),
+            vec![vec![2, 2, 3], vec![7]]
         )
     }
 }
