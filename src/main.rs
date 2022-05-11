@@ -23,8 +23,11 @@ mod q219;
 mod q220;
 mod q232;
 mod q238;
+mod q268;
 mod q283;
+mod q287;
 mod q3;
+mod q300;
 mod q303;
 mod q322;
 mod q33;
@@ -64,7 +67,7 @@ fn main() {
     condition.insert("q15", no);
     condition.insert("q33", no);
     condition.insert("q35", no);
-    condition.insert("q39", run_this_test);
+    condition.insert("q39", no);
     condition.insert("q46", no);
     condition.insert("q47", no);
     condition.insert("q53", no);
@@ -86,7 +89,9 @@ fn main() {
     condition.insert("q219", no);
     condition.insert("q220", no);
     condition.insert("q238", no);
+    condition.insert("q268", no);
     condition.insert("q283", no);
+    condition.insert("q287", run_this_test);
     condition.insert("q303", no);
     condition.insert("q322", no);
     condition.insert("q350", no);
@@ -101,6 +106,30 @@ fn main() {
     condition.insert("q994", no);
     condition.insert("q973", no);
     condition.insert("q977", no);
+
+    if *condition.get("q268").unwrap_or(&false) {
+        println!("Question 268 - Missing Number");
+        assert_eq!(q268::Solution::missing_number(vec![3, 0, 1]), 2);
+        assert_eq!(q268::Solution::missing_number(vec![0, 1]), 2);
+        assert_eq!(
+            q268::Solution::missing_number(vec![9, 6, 4, 2, 3, 5, 7, 0, 1]),
+            8
+        );
+    }
+
+    if *condition.get("q287").unwrap_or(&false) {
+        println!("Question 268 - Find the Duplicate Number");
+        assert_eq!(q287::Solution::find_duplicate(vec![1, 3, 4, 2, 2]), 2);
+        assert_eq!(q287::Solution::find_duplicate(vec![1, 3, 4, 2, 1]), 1);
+        assert_eq!(
+            q287::Solution::find_duplicate_tortoise_hare(vec![1, 3, 4, 2, 1]),
+            1
+        );
+        assert_eq!(
+            q287::Solution::find_duplicate_tortoise_hare(vec![2, 5, 9, 6, 9, 3, 8, 9, 7, 1]),
+            9
+        );
+    }
 
     if *condition.get("q1").unwrap_or(&false) {
         assert_eq!(q1::Solution::two_sum(vec![2, 7, 11, 15], 9), vec![0, 1]);
