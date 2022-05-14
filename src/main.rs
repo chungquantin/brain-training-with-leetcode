@@ -8,6 +8,7 @@ mod q1;
 mod q1143;
 mod q118;
 mod q121;
+mod q1334;
 mod q139;
 mod q141;
 mod q15;
@@ -91,7 +92,7 @@ fn main() {
     condition.insert("q238", no);
     condition.insert("q268", no);
     condition.insert("q283", no);
-    condition.insert("q287", run_this_test);
+    condition.insert("q287", no);
     condition.insert("q303", no);
     condition.insert("q322", no);
     condition.insert("q350", no);
@@ -106,6 +107,7 @@ fn main() {
     condition.insert("q994", no);
     condition.insert("q973", no);
     condition.insert("q977", no);
+    condition.insert("q1334", run_this_test);
 
     if *condition.get("q268").unwrap_or(&false) {
         println!("Question 268 - Missing Number");
@@ -985,5 +987,34 @@ fn main() {
             q39::Solution::combination_sum(vec![2, 3, 6, 7], 7),
             vec![vec![2, 2, 3], vec![7]]
         )
+    }
+
+    if *condition.get("q1334").unwrap_or(&false) {
+        println!("Question 1334 - Find the City With the Smallest Number of Neighbors at a Threshold Distance");
+
+        assert_eq!(
+            q1334::Solution::find_the_city(
+                4,
+                vec![vec![0, 1, 3], vec![1, 2, 1], vec![1, 3, 4], vec![2, 3, 1]],
+                4
+            ),
+            3
+        );
+
+        assert_eq!(
+            q1334::Solution::find_the_city(
+                6,
+                vec![
+                    vec![0, 3, 7],
+                    vec![2, 4, 1],
+                    vec![0, 1, 5],
+                    vec![2, 3, 10],
+                    vec![1, 3, 6],
+                    vec![1, 2, 1]
+                ],
+                417
+            ),
+            5
+        );
     }
 }

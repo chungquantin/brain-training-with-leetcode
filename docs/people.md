@@ -1,0 +1,4 @@
+- John McCarthy (AI)
+- Alan Turing (Cryptography, AI)
+- Leslie Lamport (Distribution System)
+- John Horton Conway (AI, The Game of Life)
