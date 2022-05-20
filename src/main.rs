@@ -7,6 +7,7 @@ mod others;
 mod q1;
 mod q1143;
 mod q118;
+mod q1192;
 mod q121;
 mod q1334;
 mod q139;
@@ -107,7 +108,8 @@ fn main() {
     condition.insert("q994", no);
     condition.insert("q973", no);
     condition.insert("q977", no);
-    condition.insert("q1334", run_this_test);
+    condition.insert("q1192", run_this_test);
+    condition.insert("q1334", no);
 
     if *condition.get("q268").unwrap_or(&false) {
         println!("Question 268 - Missing Number");
@@ -724,18 +726,18 @@ fn main() {
 
     if *condition.get("q973").unwrap_or(&false) {
         println!("Question 973 - K Closest Points to Origin");
-        // assert_eq!(
-        //     q973::Solution::k_closest(vec![vec![1, 3], vec![-2, 2]], 1),
-        //     vec![vec![-2, 2]]
-        // );
-        // assert_eq!(
-        //     q973::Solution::k_closest(vec![vec![3, 3], vec![5, -1], vec![-2, 4]], 2),
-        //     vec![vec![3, 3], vec![-2, 4]]
-        // );
-        // assert_eq!(
-        //     q973::Solution::k_closest(vec![vec![6, 10], vec![-3, 3], vec![-2, 5], vec![0, 2]], 3),
-        //     vec![vec![0, 2], vec![-3, 3], vec![-2, 5]]
-        // );
+        assert_eq!(
+            q973::Solution::k_closest(vec![vec![1, 3], vec![-2, 2]], 1),
+            vec![vec![-2, 2]]
+        );
+        assert_eq!(
+            q973::Solution::k_closest(vec![vec![3, 3], vec![5, -1], vec![-2, 4]], 2),
+            vec![vec![3, 3], vec![-2, 4]]
+        );
+        assert_eq!(
+            q973::Solution::k_closest(vec![vec![6, 10], vec![-3, 3], vec![-2, 5], vec![0, 2]], 3),
+            vec![vec![0, 2], vec![-3, 3], vec![-2, 5]]
+        );
         assert_eq!(
             q973::Solution::k_closest(
                 vec![
@@ -1015,6 +1017,33 @@ fn main() {
                 417
             ),
             5
+        );
+    }
+
+    if *condition.get("q1192").unwrap_or(&false) {
+        println!("Question 1192 - Critical Connections in a Network");
+
+        assert_eq!(
+            q1192::Solution::critical_connections(
+                4,
+                vec![vec![0, 1], vec![1, 2], vec![2, 0], vec![1, 3]],
+            ),
+            vec![vec![1, 3]]
+        );
+        assert_eq!(
+            q1192::Solution::critical_connections(
+                5,
+                vec![
+                    vec![1, 0],
+                    vec![2, 0],
+                    vec![3, 2],
+                    vec![4, 2],
+                    vec![4, 3],
+                    vec![3, 0],
+                    vec![4, 0]
+                ]
+            ),
+            vec![vec![0, 1]]
         );
     }
 }
