@@ -50,6 +50,7 @@ mod q566;
 mod q567;
 mod q57;
 mod q58;
+mod q67;
 mod q695;
 mod q70;
 mod q733;
@@ -76,6 +77,7 @@ fn main() {
     condition.insert("q56", no);
     condition.insert("q57", no);
     condition.insert("q58", no);
+    condition.insert("q67", run_this_test);
     condition.insert("q70", no);
     condition.insert("q78", no);
     condition.insert("q88", no);
@@ -108,7 +110,7 @@ fn main() {
     condition.insert("q994", no);
     condition.insert("q973", no);
     condition.insert("q977", no);
-    condition.insert("q1192", run_this_test);
+    condition.insert("q1192", no);
     condition.insert("q1334", no);
 
     if *condition.get("q268").unwrap_or(&false) {
@@ -1045,5 +1047,14 @@ fn main() {
             ),
             vec![vec![0, 1]]
         );
+    }
+
+    if *condition.get("q67").unwrap_or(&false) {
+        println!("Question 67 - Add Binary");
+
+        assert_eq!(
+            q67::Solution::add_binary(String::from("11"), String::from("1")),
+            String::from("100")
+        )
     }
 }
