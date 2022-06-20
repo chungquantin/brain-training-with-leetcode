@@ -60,6 +60,7 @@ mod q70_climb_stairs;
 mod q733_flood_fill;
 mod q76_minimum_window_substring;
 mod q78_subsets;
+mod q862_shortest_subarray_with_sum_at_least_k;
 mod q88_merge;
 mod q896_monotonic_array;
 mod q90_subsets_with_duplicate;
@@ -102,7 +103,7 @@ fn main() {
     condition.insert("q219", no);
     condition.insert("q220", no);
     condition.insert("q238", no);
-    condition.insert("q239", run_this_test);
+    condition.insert("q239", no);
     condition.insert("q268", no);
     condition.insert("q283", no);
     condition.insert("q287", no);
@@ -116,6 +117,7 @@ fn main() {
     condition.insert("q567", no);
     condition.insert("q695", no);
     condition.insert("q733", no);
+    condition.insert("q862", run_this_test);
     condition.insert("q921", no);
     condition.insert("q994", no);
     condition.insert("q973", no);
@@ -1348,6 +1350,54 @@ fn main() {
         assert_eq!(
             q239_sliding_window_maximum::Solution::max_sliding_window(vec![1, 3, 1, 2, 0, 5], 3),
             vec![3, 3, 2, 5]
+        );
+    }
+
+    if *condition.get("q862").unwrap_or(&false) {
+        println!("Question 862 - Shortest Subarray with Sum at Least K");
+
+        // assert_eq!(
+        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+        //         vec![84, -37, 32, 40, 95],
+        //         167
+        //     ),
+        //     3
+        // );
+        // assert_eq!(
+        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+        //         vec![84, 100, -37, 32, 40, 95],
+        //         167
+        //     ),
+        //     2
+        // );
+        // assert_eq!(
+        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+        //         vec![2, -1, 2, 3, 1, 2, 5, 6, 1, 2, 6, 8, 10],
+        //         10
+        //     ),
+        //     1
+        // );
+        // assert_eq!(
+        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+        //         vec![31, 63, -38, 43, 65, 74, 90, -23, 45, 22],
+        //         341
+        //     ),
+        //     9
+        // );
+        // assert_eq!(
+        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+        //         vec![-28, 81, -20, 28, -29],
+        //         89
+        //     ),
+        //     3
+        // );
+
+        assert_eq!(
+            q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+                vec![-1000000; 1000],
+                10000000
+            ),
+            -1
         );
     }
 }

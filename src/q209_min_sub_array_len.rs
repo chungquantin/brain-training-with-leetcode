@@ -1,6 +1,8 @@
 pub struct Solution;
 
 impl Solution {
+ // Using Kadane's algorithm:
+ // + Only apply for array with positive elements
  pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 {
   let mut ans = i32::MAX;
   let s = nums.len();
@@ -11,9 +13,7 @@ impl Solution {
   while end < s {
    cur += nums[end];
    counter += 1;
-   println!("{} {}", cur, target);
    while cur >= target {
-    println!("post {} {}", cur, target);
     if cur >= target {
      ans = std::cmp::min(counter, ans);
     }
