@@ -28,6 +28,7 @@ mod q219_contains_nearby_duplicate;
 mod q220_contains_nearby_almost_duplicate;
 mod q232_queue;
 mod q238_product_except_self;
+mod q239_sliding_window_maximum;
 mod q268_missing_number;
 mod q283_move_zeroes;
 mod q287_find_duplicate;
@@ -60,6 +61,7 @@ mod q733_flood_fill;
 mod q76_minimum_window_substring;
 mod q78_subsets;
 mod q88_merge;
+mod q896_monotonic_array;
 mod q90_subsets_with_duplicate;
 mod q921_min_add_to_make_valid;
 mod q973_k_closest;
@@ -83,7 +85,7 @@ fn main() {
     condition.insert("q58", no);
     condition.insert("q67", no);
     condition.insert("q70", no);
-    condition.insert("q76", run_this_test);
+    condition.insert("q76", no);
     condition.insert("q78", no);
     condition.insert("q88", no);
     condition.insert("q90", no);
@@ -100,6 +102,7 @@ fn main() {
     condition.insert("q219", no);
     condition.insert("q220", no);
     condition.insert("q238", no);
+    condition.insert("q239", run_this_test);
     condition.insert("q268", no);
     condition.insert("q283", no);
     condition.insert("q287", no);
@@ -1307,6 +1310,44 @@ fn main() {
                 String::from("aa")
             ),
             String::from("")
+        );
+    }
+
+    if *condition.get("q239").unwrap_or(&false) {
+        println!("Question 239 - Sliding Window Maximum");
+
+        assert_eq!(
+            q239_sliding_window_maximum::Solution::max_sliding_window(
+                vec![1, 3, -1, -3, 5, 3, 6, 7],
+                3
+            ),
+            vec![3, 3, 5, 5, 6, 7]
+        );
+
+        assert_eq!(
+            q239_sliding_window_maximum::Solution::max_sliding_window(
+                vec![1, 3, -1, -3, 5, 6, 6, 7],
+                3
+            ),
+            vec![3, 3, 5, 6, 6, 7]
+        );
+
+        assert_eq!(
+            q239_sliding_window_maximum::Solution::max_sliding_window(vec![1, 2, 4, 5, 2, 1, 3], 3),
+            vec![4, 5, 5, 5, 3]
+        );
+
+        assert_eq!(
+            q239_sliding_window_maximum::Solution::max_sliding_window(
+                vec![1, 2, 4, 5, 7, 2, 4, 6, 1, -10, 2, 4, -3, -4, 5, 2, 1, 3],
+                3
+            ),
+            vec![4, 5, 7, 7, 7, 6, 6, 6, 2, 4, 4, 4, 5, 5, 5, 3]
+        );
+
+        assert_eq!(
+            q239_sliding_window_maximum::Solution::max_sliding_window(vec![1, 3, 1, 2, 0, 5], 3),
+            vec![3, 3, 2, 5]
         );
     }
 }
