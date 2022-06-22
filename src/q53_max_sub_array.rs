@@ -47,4 +47,22 @@ impl Solution {
         }
         return m;
     }
+
+    pub fn max_sub_array_prefix_sum(nums: Vec<i32>) -> i32 {
+        if nums.len() == 1 {
+            return nums[0];
+        }
+        let mut prefix_sum: Vec<i32> = vec![i32::MIN; nums.len() + 1];
+        prefix_sum[0] = 0;
+        for ind in 1..nums.len() + 1 {
+            prefix_sum[ind] = prefix_sum[ind - 1] + nums[ind - 1];
+        }
+        let mut max = i32::MIN;
+        let mut min = i32::MAX;
+        for ind in 0..nums.len() {
+            min = std::cmp::min(min, prefix_sum[0]);
+            max = std::cmp::max(max, prefix_sum[ind + 1] - min);
+        }
+        max
+    }
 }

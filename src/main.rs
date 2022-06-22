@@ -46,6 +46,7 @@ mod q409_longest_palindrome;
 mod q417_pacific_alantic;
 mod q46_permutation;
 mod q47_permutation_unique;
+mod q496_next_greater_element_I;
 mod q51_n_queens;
 mod q53_max_sub_array;
 mod q542_update_matrix;
@@ -60,6 +61,7 @@ mod q70_climb_stairs;
 mod q733_flood_fill;
 mod q76_minimum_window_substring;
 mod q78_subsets;
+mod q84_largest_retangle_area;
 mod q862_shortest_subarray_with_sum_at_least_k;
 mod q88_merge;
 mod q896_monotonic_array;
@@ -88,6 +90,7 @@ fn main() {
     condition.insert("q70", no);
     condition.insert("q76", no);
     condition.insert("q78", no);
+    condition.insert("q84", run_this_test);
     condition.insert("q88", no);
     condition.insert("q90", no);
     condition.insert("q118", no);
@@ -112,12 +115,13 @@ fn main() {
     condition.insert("q350", no);
     condition.insert("q383", no);
     condition.insert("q417", no);
+    condition.insert("q496", no);
     condition.insert("q542", no);
     condition.insert("q566", no);
     condition.insert("q567", no);
     condition.insert("q695", no);
     condition.insert("q733", no);
-    condition.insert("q862", run_this_test);
+    condition.insert("q862", no);
     condition.insert("q921", no);
     condition.insert("q994", no);
     condition.insert("q973", no);
@@ -171,13 +175,21 @@ fn main() {
     if *condition.get("q53").unwrap_or(&false) {
         println!("Question 53 - Maximum SubArray");
         assert_eq!(
-            q53_max_sub_array::Solution::max_sub_array(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4]),
+            q53_max_sub_array::Solution::max_sub_array_prefix_sum(vec![
+                -2, 1, -3, 4, -1, 2, 1, -5, 4
+            ]),
             6
         );
-        assert_eq!(q53_max_sub_array::Solution::max_sub_array(vec![-1]), -1);
-        assert_eq!(q53_max_sub_array::Solution::max_sub_array(vec![-1, -2]), -1);
         assert_eq!(
-            q53_max_sub_array::Solution::max_sub_array(vec![5, 4, -1, 7, 8]),
+            q53_max_sub_array::Solution::max_sub_array_prefix_sum(vec![-1]),
+            -1
+        );
+        assert_eq!(
+            q53_max_sub_array::Solution::max_sub_array_prefix_sum(vec![-1, -2]),
+            -1
+        );
+        assert_eq!(
+            q53_max_sub_array::Solution::max_sub_array_prefix_sum(vec![5, 4, -1, 7, 8]),
             23
         );
         println!("------- Version 2");
@@ -1356,41 +1368,41 @@ fn main() {
     if *condition.get("q862").unwrap_or(&false) {
         println!("Question 862 - Shortest Subarray with Sum at Least K");
 
-        // assert_eq!(
-        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
-        //         vec![84, -37, 32, 40, 95],
-        //         167
-        //     ),
-        //     3
-        // );
-        // assert_eq!(
-        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
-        //         vec![84, 100, -37, 32, 40, 95],
-        //         167
-        //     ),
-        //     2
-        // );
-        // assert_eq!(
-        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
-        //         vec![2, -1, 2, 3, 1, 2, 5, 6, 1, 2, 6, 8, 10],
-        //         10
-        //     ),
-        //     1
-        // );
-        // assert_eq!(
-        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
-        //         vec![31, 63, -38, 43, 65, 74, 90, -23, 45, 22],
-        //         341
-        //     ),
-        //     9
-        // );
-        // assert_eq!(
-        //     q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
-        //         vec![-28, 81, -20, 28, -29],
-        //         89
-        //     ),
-        //     3
-        // );
+        assert_eq!(
+            q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+                vec![84, -37, 32, 40, 95],
+                167
+            ),
+            3
+        );
+        assert_eq!(
+            q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+                vec![84, 100, -37, 32, 40, 95],
+                167
+            ),
+            2
+        );
+        assert_eq!(
+            q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+                vec![2, -1, 2, 3, 1, 2, 5, 6, 1, 2, 6, 8, 10],
+                10
+            ),
+            1
+        );
+        assert_eq!(
+            q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+                vec![31, 63, -38, 43, 65, 74, 90, -23, 45, 22],
+                341
+            ),
+            9
+        );
+        assert_eq!(
+            q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
+                vec![-28, 81, -20, 28, -29],
+                89
+            ),
+            3
+        );
 
         assert_eq!(
             q862_shortest_subarray_with_sum_at_least_k::Solution::shortest_subarray(
@@ -1398,6 +1410,62 @@ fn main() {
                 10000000
             ),
             -1
+        );
+    }
+
+    if *condition.get("q496").unwrap_or(&false) {
+        println!("Question 496 - Next Greater Element I");
+
+        assert_eq!(
+            q496_next_greater_element_I::Solution::next_greater_element(
+                vec![4, 1, 2],
+                vec![1, 3, 4, 2]
+            ),
+            vec![-1, 3, -1]
+        );
+
+        assert_eq!(
+            q496_next_greater_element_I::Solution::next_greater_element(
+                vec![1, 3, 4, 2],
+                vec![6, 5, 4, 3, 2, 1, 7]
+            ),
+            vec![7, 7, 7, 7]
+        );
+    }
+
+    if *condition.get("q84").unwrap_or(&false) {
+        println!("Question 84 - Largest Rectangle in Histogram");
+
+        assert_eq!(
+            q84_largest_retangle_area::Solution::largest_rectangle_area(vec![2, 1, 5, 6, 2, 3]),
+            10
+        );
+
+        assert_eq!(
+            q84_largest_retangle_area::Solution::largest_rectangle_area(vec![2, 4, 2, 1]),
+            6
+        );
+
+        assert_eq!(
+            q84_largest_retangle_area::Solution::largest_rectangle_area(vec![2, 4, 2]),
+            6
+        );
+
+        assert_eq!(
+            q84_largest_retangle_area::Solution::largest_rectangle_area(vec![2, 4]),
+            4
+        );
+
+        assert_eq!(
+            q84_largest_retangle_area::Solution::largest_rectangle_area(vec![
+                10, 1, 9, 2, 8, 3, 7, 11
+            ]),
+            14
+        );
+
+        assert_eq!(
+            q84_largest_retangle_area::Solution::largest_rectangle_area(vec![2, 1, 2]),
+            3
         );
     }
 }
