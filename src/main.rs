@@ -1,6 +1,7 @@
 // use std::borrow::Borrow;
 use std::{collections::HashMap, vec};
 
+mod algo;
 #[path = "./ds/linked_list.rs"]
 mod linked_list;
 mod others;
@@ -71,9 +72,53 @@ mod q973_k_closest;
 mod q977_sorted_squares;
 mod q994_oranges_rotting;
 
-fn main() {
+pub use algo::*;
+use futures::future::join_all;
+pub use rand::Rng;
+use std::thread;
+
+fn gen_random(number_of_elements: u32, min: i32, max: i32) -> Vec<i32> {
+    let mut rng = rand::thread_rng();
+    (0..number_of_elements)
+        .map(|_| rng.gen_range(min..max))
+        .collect()
+}
+
+async fn sort_algorithm_test(run_this_test: bool) {
+    if run_this_test {
+        let s = SortAlgorithm {
+            inputs: vec![
+                gen_random(10, 0, 50),
+                gen_random(100, 0, 100),
+                gen_random(1000, 0, 1000),
+                gen_random(10000, 0, 100000),
+            ],
+            sort: 1,
+        };
+
+        let methods = vec![
+            (SortAlgorithmName::BubbleSort, false),
+            (SortAlgorithmName::InsertionSort, false),
+            (SortAlgorithmName::MergeSort, false),
+        ];
+        let mut async_handle = vec![];
+        for method in methods {
+            let handle = async {
+                let s_clone = s.clone();
+                let output_shown = false;
+                s_clone.frame(method.0, output_shown);
+            };
+            async_handle.push(handle);
+        }
+        join_all(async_handle).await;
+    }
+}
+
+#[tokio::main]
+async fn main() {
     let mut condition = HashMap::new();
     let (run_this_test, no) = (true, false);
+    sort_algorithm_test(run_this_test).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
     condition.insert("q15", no);
@@ -90,7 +135,7 @@ fn main() {
     condition.insert("q70", no);
     condition.insert("q76", no);
     condition.insert("q78", no);
-    condition.insert("q84", run_this_test);
+    condition.insert("q84", no);
     condition.insert("q88", no);
     condition.insert("q90", no);
     condition.insert("q118", no);
