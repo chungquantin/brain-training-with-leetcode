@@ -35,6 +35,7 @@ mod q283_move_zeroes;
 mod q287_find_duplicate;
 mod q300_length_of_lis;
 mod q303_sum_range;
+mod q304_range_sum_query_2D_immutable;
 mod q322_coin_change;
 mod q33_search;
 mod q344_reverse_string;
@@ -118,7 +119,7 @@ async fn sort_algorithm_test(run_this_test: bool) {
 async fn main() {
     let mut condition = HashMap::new();
     let (run_this_test, no) = (true, false);
-    sort_algorithm_test(run_this_test).await;
+    sort_algorithm_test(no).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
     condition.insert("q15", no);
@@ -156,6 +157,7 @@ async fn main() {
     condition.insert("q283", no);
     condition.insert("q287", no);
     condition.insert("q303", no);
+    condition.insert("q304", run_this_test);
     condition.insert("q322", no);
     condition.insert("q350", no);
     condition.insert("q383", no);
@@ -1512,5 +1514,19 @@ async fn main() {
             q84_largest_retangle_area::Solution::largest_rectangle_area(vec![2, 1, 2]),
             3
         );
+    }
+
+    if *condition.get("q304").unwrap_or(&false) {
+        let obj = q304_range_sum_query_2D_immutable::NumMatrix::new(vec![
+            vec![3, 0, 1, 4, 2],
+            vec![5, 6, 3, 2, 1],
+            vec![1, 2, 0, 1, 5],
+            vec![4, 1, 0, 1, 7],
+            vec![1, 0, 3, 0, 5],
+        ]);
+
+        // assert_eq!(obj.sum_region(2, 1, 4, 3), 8);
+        assert_eq!(obj.sum_region(1, 1, 2, 2), 11);
+        assert_eq!(obj.sum_region(1, 2, 2, 4), 12);
     }
 }
