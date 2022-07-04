@@ -44,8 +44,10 @@ mod q35_search_insert;
 mod q383_can_construct;
 mod q39_combination_sum;
 mod q3_length_of_longest_substring;
+mod q407_trapping_rain_water_II;
 mod q409_longest_palindrome;
 mod q417_pacific_alantic;
+mod q42_trapping_rain_water;
 mod q46_permutation;
 mod q47_permutation_unique;
 mod q496_next_greater_element_I;
@@ -63,6 +65,7 @@ mod q70_climb_stairs;
 mod q733_flood_fill;
 mod q76_minimum_window_substring;
 mod q78_subsets;
+mod q82_remove_duplicates_from_sorted_list_II;
 mod q84_largest_retangle_area;
 mod q862_shortest_subarray_with_sum_at_least_k;
 mod q88_merge;
@@ -76,7 +79,6 @@ mod q994_oranges_rotting;
 pub use algo::*;
 use futures::future::join_all;
 pub use rand::Rng;
-use std::thread;
 
 fn gen_random(number_of_elements: u32, min: i32, max: i32) -> Vec<i32> {
     let mut rng = rand::thread_rng();
@@ -126,6 +128,7 @@ async fn main() {
     condition.insert("q33", no);
     condition.insert("q35", no);
     condition.insert("q39", no);
+    condition.insert("q42", no);
     condition.insert("q46", no);
     condition.insert("q47", no);
     condition.insert("q53", no);
@@ -157,10 +160,11 @@ async fn main() {
     condition.insert("q283", no);
     condition.insert("q287", no);
     condition.insert("q303", no);
-    condition.insert("q304", run_this_test);
+    condition.insert("q304", no);
     condition.insert("q322", no);
     condition.insert("q350", no);
     condition.insert("q383", no);
+    condition.insert("q407", run_this_test);
     condition.insert("q417", no);
     condition.insert("q496", no);
     condition.insert("q542", no);
@@ -1528,5 +1532,128 @@ async fn main() {
         // assert_eq!(obj.sum_region(2, 1, 4, 3), 8);
         assert_eq!(obj.sum_region(1, 1, 2, 2), 11);
         assert_eq!(obj.sum_region(1, 2, 2, 4), 12);
+    }
+
+    if *condition.get("q42").unwrap_or(&false) {
+        println!("Question 42 - Trapping Rain Water");
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]),
+            6
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![3, 2, 1, 2, 1, 3]),
+            6
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![1, 0, 0, 0, 0, 0, 1]),
+            5
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![4, 2, 0, 3, 2, 5]),
+            9
+        );
+
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![4, 2, 0, 3, 2, 5]),
+            9
+        );
+
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![2, 0, 0, 1, 3]),
+            5
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![3, 0, 0, 1, 2]),
+            5
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![3, 0, 0, 1, 3]),
+            8
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]),
+            0
+        );
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap(vec![5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5]),
+            25
+        );
+
+        assert_eq!(
+            q42_trapping_rain_water::Solution::trap_using_two_pointers(vec![
+                5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5
+            ]),
+            25
+        );
+    }
+
+    if *condition.get("q407").unwrap_or(&false) {
+        println!("Question 407 - Trapping Rain Water II");
+        assert_eq!(
+            q407_trapping_rain_water_II::Solution::trap_rain_water(vec![
+                vec![3, 3, 3, 3, 3],
+                vec![3, 2, 2, 2, 3],
+                vec![3, 2, 1, 2, 3],
+                vec![3, 2, 2, 2, 3],
+                vec![3, 3, 3, 3, 3]
+            ]),
+            10
+        );
+        assert_eq!(
+            q407_trapping_rain_water_II::Solution::trap_rain_water(vec![
+                vec![1, 4, 3, 1, 3, 2],
+                vec![3, 2, 1, 3, 2, 4],
+                vec![2, 3, 3, 2, 3, 1]
+            ]),
+            4
+        );
+
+        assert_eq!(
+            q407_trapping_rain_water_II::Solution::trap_rain_water(vec![
+                vec![12, 13, 1, 12],
+                vec![13, 4, 13, 12],
+                vec![13, 8, 10, 12],
+                vec![12, 13, 12, 12],
+                vec![13, 13, 13, 13]
+            ]),
+            14
+        );
+
+        assert_eq!(
+            q407_trapping_rain_water_II::Solution::trap_rain_water(vec![
+                vec![5, 5, 5, 1],
+                vec![5, 1, 1, 5],
+                vec![5, 1, 5, 5],
+                vec![5, 2, 5, 8]
+            ]),
+            3
+        );
+
+        assert_eq!(
+            q407_trapping_rain_water_II::Solution::trap_rain_water(vec![
+                vec![9, 9, 9, 9, 9, 9, 8, 9, 9, 9, 9],
+                vec![9, 0, 9, 0, 0, 0, 1, 0, 0, 0, 9],
+                vec![9, 7, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+                vec![9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+                vec![9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+            ]),
+            200
+        );
+
+        assert_eq!(
+            q407_trapping_rain_water_II::Solution::trap_rain_water(vec![
+                vec![19383, 10886, 12777, 16915, 17793, 18335, 15386, 10492, 16649, 11421],
+                vec![12362, 27, 8690, 59, 7763, 3926, 540, 3426, 9172, 5736],
+                vec![15211, 5368, 2567, 6429, 5782, 1530, 2862, 5123, 4067, 3135],
+                vec![13929, 9802, 4022, 3058, 3069, 8167, 1393, 8456, 5011, 8042],
+                vec![16229, 7373, 4421, 4919, 3784, 8537, 5198, 4324, 8315, 4370],
+                vec![16413, 3526, 6091, 8980, 9956, 1873, 6862, 9170, 6996, 7281],
+                vec![12305, 925, 7084, 6327, 336, 6505, 846, 1729, 1313, 5857],
+                vec![16124, 3895, 9582, 545, 8814, 3367, 5434, 364, 4043, 3750],
+                vec![11087, 6808, 7276, 7178, 5788, 3584, 5403, 2651, 2754, 2399],
+                vec![19932, 5060, 9676, 3368, 7739, 12, 6226, 8586, 8094, 7539]
+            ]),
+            79058
+        );
     }
 }
