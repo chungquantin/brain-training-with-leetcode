@@ -8,6 +8,7 @@ mod others;
 mod q1143_longest_common_subsequence;
 mod q118_generate;
 mod q1192_critical_connection;
+mod q11_container_with_most_water;
 mod q121_max_profit;
 mod q1334_find_the_city;
 mod q139_word_break;
@@ -48,6 +49,7 @@ mod q407_trapping_rain_water_II;
 mod q409_longest_palindrome;
 mod q417_pacific_alantic;
 mod q42_trapping_rain_water;
+mod q438_find_all_anagrams_in_a_string;
 mod q46_permutation;
 mod q47_permutation_unique;
 mod q496_next_greater_element_I;
@@ -66,6 +68,7 @@ mod q733_flood_fill;
 mod q76_minimum_window_substring;
 mod q78_subsets;
 mod q82_remove_duplicates_from_sorted_list_II;
+mod q844_backspace_string_compare;
 mod q84_largest_retangle_area;
 mod q862_shortest_subarray_with_sum_at_least_k;
 mod q88_merge;
@@ -74,6 +77,7 @@ mod q90_subsets_with_duplicate;
 mod q921_min_add_to_make_valid;
 mod q973_k_closest;
 mod q977_sorted_squares;
+mod q986_interval_list_intersections;
 mod q994_oranges_rotting;
 
 pub use algo::*;
@@ -124,6 +128,7 @@ async fn main() {
     sort_algorithm_test(no).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
+    condition.insert("q11", no);
     condition.insert("q15", no);
     condition.insert("q33", no);
     condition.insert("q35", no);
@@ -164,19 +169,22 @@ async fn main() {
     condition.insert("q322", no);
     condition.insert("q350", no);
     condition.insert("q383", no);
-    condition.insert("q407", run_this_test);
+    condition.insert("q407", no);
     condition.insert("q417", no);
+    condition.insert("q438", run_this_test);
     condition.insert("q496", no);
     condition.insert("q542", no);
     condition.insert("q566", no);
     condition.insert("q567", no);
     condition.insert("q695", no);
     condition.insert("q733", no);
+    condition.insert("q844", no);
     condition.insert("q862", no);
     condition.insert("q921", no);
-    condition.insert("q994", no);
     condition.insert("q973", no);
     condition.insert("q977", no);
+    condition.insert("q986", no);
+    condition.insert("q994", no);
     condition.insert("q1192", no);
     condition.insert("q1334", no);
 
@@ -1654,6 +1662,96 @@ async fn main() {
                 vec![19932, 5060, 9676, 3368, 7739, 12, 6226, 8586, 8094, 7539]
             ]),
             79058
+        );
+    }
+
+    if *condition.get("q844").unwrap_or(&false) {
+        println!("Question 844 - Backspace string compare");
+        assert_eq!(
+            q844_backspace_string_compare::Solution::backspace_compare(
+                String::from("ab#c"),
+                String::from("ad#c"),
+            ),
+            true
+        );
+
+        assert_eq!(
+            q844_backspace_string_compare::Solution::backspace_compare(
+                String::from("ab##"),
+                String::from("c#d#"),
+            ),
+            true
+        );
+
+        assert_eq!(
+            q844_backspace_string_compare::Solution::backspace_compare(
+                String::from("a#c"),
+                String::from("b"),
+            ),
+            false
+        );
+    }
+
+    if *condition.get("q986").unwrap_or(&false) {
+        println!("Question 986 - Interval List Intersections");
+        assert_eq!(
+            q986_interval_list_intersections::Solution::interval_intersection(
+                vec![vec![0, 2], vec![5, 10], vec![13, 23], vec![24, 25]],
+                vec![vec![1, 5], vec![8, 12], vec![15, 24], vec![25, 26]]
+            ),
+            vec![
+                vec![1, 2],
+                vec![5, 5],
+                vec![8, 10],
+                vec![15, 23],
+                vec![24, 24],
+                vec![25, 25]
+            ]
+        )
+    }
+
+    if *condition.get("q11").unwrap_or(&false) {
+        println!("Question 11 - Container With Most Water");
+
+        assert_eq!(
+            q11_container_with_most_water::Solution::max_area(vec![1, 8, 6, 2, 5, 4, 8, 3, 7],),
+            49
+        );
+    }
+
+    if *condition.get("q438").unwrap_or(&false) {
+        println!("Question 438 - Find All Anagrams in a String");
+
+        assert_eq!(
+            q438_find_all_anagrams_in_a_string::Solution::find_anagrams(
+                String::from("cbaebabacd"),
+                String::from("abc")
+            ),
+            vec![0, 6]
+        );
+
+        assert_eq!(
+            q438_find_all_anagrams_in_a_string::Solution::find_anagrams(
+                String::from("abab"),
+                String::from("ab")
+            ),
+            vec![0, 1, 2]
+        );
+
+        assert_eq!(
+            q438_find_all_anagrams_in_a_string::Solution::find_anagrams(
+                String::from("baa"),
+                String::from("aa")
+            ),
+            vec![1]
+        );
+
+        assert_eq!(
+            q438_find_all_anagrams_in_a_string::Solution::find_anagrams(
+                String::from("abaacbabc"),
+                String::from("abc")
+            ),
+            vec![3, 4, 6]
         );
     }
 }
