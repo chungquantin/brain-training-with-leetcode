@@ -56,6 +56,8 @@ mod q496_next_greater_element_I;
 mod q51_n_queens;
 mod q53_max_sub_array;
 mod q542_update_matrix;
+mod q547_number_of_provinces;
+mod q54_spiral_matrix;
 mod q566_matrix_reshape;
 mod q567_check_inclusion;
 mod q56_merge_intervals;
@@ -64,6 +66,7 @@ mod q58_length_of_last_word;
 mod q67_add_binary;
 mod q695_max_area_of_island;
 mod q70_climb_stairs;
+mod q713_subarray_product_smaller_than_k;
 mod q733_flood_fill;
 mod q76_minimum_window_substring;
 mod q78_subsets;
@@ -137,6 +140,7 @@ async fn main() {
     condition.insert("q46", no);
     condition.insert("q47", no);
     condition.insert("q53", no);
+    condition.insert("q54", run_this_test);
     condition.insert("q56", no);
     condition.insert("q57", no);
     condition.insert("q58", no);
@@ -171,12 +175,14 @@ async fn main() {
     condition.insert("q383", no);
     condition.insert("q407", no);
     condition.insert("q417", no);
-    condition.insert("q438", run_this_test);
+    condition.insert("q438", no);
     condition.insert("q496", no);
     condition.insert("q542", no);
+    condition.insert("q547", no);
     condition.insert("q566", no);
     condition.insert("q567", no);
     condition.insert("q695", no);
+    condition.insert("q713", no);
     condition.insert("q733", no);
     condition.insert("q844", no);
     condition.insert("q862", no);
@@ -1753,5 +1759,104 @@ async fn main() {
             ),
             vec![3, 4, 6]
         );
+    }
+
+    if *condition.get("q713").unwrap_or(&false) {
+        println!("Question 713 - Subarray Product Smaller than K");
+        assert_eq!(
+            q713_subarray_product_smaller_than_k::Solution::num_subarray_product_less_than_k(
+                vec![10, 5, 2, 5],
+                100
+            ),
+            8
+        );
+        assert_eq!(
+            q713_subarray_product_smaller_than_k::Solution::num_subarray_product_less_than_k(
+                vec![1, 2, 3],
+                0
+            ),
+            0
+        );
+        assert_eq!(
+            q713_subarray_product_smaller_than_k::Solution::num_subarray_product_less_than_k(
+                vec![10, 9, 10, 4, 3, 8, 3, 3, 6, 2, 10, 10, 9, 3],
+                19
+            ),
+            18
+        );
+    }
+
+    if *condition.get("q547").unwrap_or(&false) {
+        println!("Question 547 - Number of Provinces");
+        assert_eq!(
+            q547_number_of_provinces::Solution::find_circle_num(vec![
+                vec![1, 1, 1],
+                vec![1, 1, 0],
+                vec![1, 0, 1]
+            ]),
+            1
+        );
+
+        assert_eq!(
+            q547_number_of_provinces::Solution::find_circle_num(vec![
+                vec![1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                vec![0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                vec![0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                vec![0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+                vec![0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+                vec![0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                vec![0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+                vec![1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+                vec![0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                vec![0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+                vec![0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+            ]),
+            8
+        );
+
+        assert_eq!(
+            q547_number_of_provinces::Solution::find_circle_num(vec![
+                vec![1, 1, 1],
+                vec![1, 1, 1],
+                vec![1, 1, 1]
+            ]),
+            1
+        )
+    }
+
+    if *condition.get("q54").unwrap_or(&false) {
+        println!("Question 54 - Spiral Matrix");
+        // assert_eq!(
+        //     q54_spiral_matrix::Solution::spiral_order(vec![
+        //         vec![1, 2, 3],
+        //         vec![4, 5, 6],
+        //         vec![7, 8, 9]
+        //     ]),
+        //     vec![1, 2, 3, 6, 9, 8, 7, 4, 5]
+        // );
+
+        assert_eq!(
+            q54_spiral_matrix::Solution::spiral_order(vec![
+                vec![1, 2, 3, 4],
+                vec![5, 6, 7, 8],
+                vec![9, 10, 11, 12],
+                vec![13, 14, 15, 16]
+            ]),
+            vec![1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10]
+        );
+
+        // assert_eq!(
+        //     q54_spiral_matrix::Solution::spiral_order(vec![vec![1, 2], vec![3, 4]]),
+        //     vec![1, 2, 4, 3]
+        // );
+
+        // assert_eq!(
+        //     q54_spiral_matrix::Solution::spiral_order(vec![vec![1], vec![2]]),
+        //     vec![1, 2]
+        // );
     }
 }
