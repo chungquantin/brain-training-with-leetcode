@@ -29,6 +29,7 @@ mod q217_contains_duplicate;
 mod q219_contains_nearby_duplicate;
 mod q220_contains_nearby_almost_duplicate;
 mod q232_queue;
+mod q2335_fill_cups;
 mod q238_product_except_self;
 mod q239_sliding_window_maximum;
 mod q268_missing_number;
@@ -65,6 +66,7 @@ mod q57_insert_intervals;
 mod q58_length_of_last_word;
 mod q67_add_binary;
 mod q695_max_area_of_island;
+mod q6_zigzag_conversion;
 mod q70_climb_stairs;
 mod q713_subarray_product_smaller_than_k;
 mod q733_flood_fill;
@@ -131,6 +133,7 @@ async fn main() {
     sort_algorithm_test(no).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
+    condition.insert("q6", run_this_test);
     condition.insert("q11", no);
     condition.insert("q15", no);
     condition.insert("q33", no);
@@ -140,7 +143,7 @@ async fn main() {
     condition.insert("q46", no);
     condition.insert("q47", no);
     condition.insert("q53", no);
-    condition.insert("q54", run_this_test);
+    condition.insert("q54", no);
     condition.insert("q56", no);
     condition.insert("q57", no);
     condition.insert("q58", no);
@@ -193,6 +196,7 @@ async fn main() {
     condition.insert("q994", no);
     condition.insert("q1192", no);
     condition.insert("q1334", no);
+    condition.insert("q2335", no);
 
     if *condition.get("q268").unwrap_or(&false) {
         println!("Question 268 - Missing Number");
@@ -1830,14 +1834,14 @@ async fn main() {
 
     if *condition.get("q54").unwrap_or(&false) {
         println!("Question 54 - Spiral Matrix");
-        // assert_eq!(
-        //     q54_spiral_matrix::Solution::spiral_order(vec![
-        //         vec![1, 2, 3],
-        //         vec![4, 5, 6],
-        //         vec![7, 8, 9]
-        //     ]),
-        //     vec![1, 2, 3, 6, 9, 8, 7, 4, 5]
-        // );
+        assert_eq!(
+            q54_spiral_matrix::Solution::spiral_order(vec![
+                vec![1, 2, 3],
+                vec![4, 5, 6],
+                vec![7, 8, 9]
+            ]),
+            vec![1, 2, 3, 6, 9, 8, 7, 4, 5]
+        );
 
         assert_eq!(
             q54_spiral_matrix::Solution::spiral_order(vec![
@@ -1849,14 +1853,32 @@ async fn main() {
             vec![1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10]
         );
 
-        // assert_eq!(
-        //     q54_spiral_matrix::Solution::spiral_order(vec![vec![1, 2], vec![3, 4]]),
-        //     vec![1, 2, 4, 3]
-        // );
+        assert_eq!(
+            q54_spiral_matrix::Solution::spiral_order(vec![vec![1, 2], vec![3, 4]]),
+            vec![1, 2, 4, 3]
+        );
 
-        // assert_eq!(
-        //     q54_spiral_matrix::Solution::spiral_order(vec![vec![1], vec![2]]),
-        //     vec![1, 2]
-        // );
+        assert_eq!(
+            q54_spiral_matrix::Solution::spiral_order(vec![vec![1], vec![2]]),
+            vec![1, 2]
+        );
+    }
+
+    if *condition.get("q2335").unwrap_or(&false) {
+        println!("Question 2335 - Fill Cups");
+
+        assert_eq!(
+            q2335_fill_cups::Solution::fill_cups(vec![100, 101, 200]),
+            201
+        );
+    }
+
+    if *condition.get("q6").unwrap_or(&false) {
+        println!("Question 6 - ZigZag Conversion");
+
+        assert_eq!(
+            q6_zigzag_conversion::Solution::convert(String::from("PAYPALISHIRING"), 4),
+            String::from("PINALSIGYAHRPI")
+        );
     }
 }
