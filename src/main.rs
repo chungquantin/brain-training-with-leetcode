@@ -54,6 +54,7 @@ mod q438_find_all_anagrams_in_a_string;
 mod q46_permutation;
 mod q47_permutation_unique;
 mod q496_next_greater_element_I;
+mod q4_median_of_two_sorted_arrays;
 mod q51_n_queens;
 mod q53_max_sub_array;
 mod q542_update_matrix;
@@ -133,7 +134,8 @@ async fn main() {
     sort_algorithm_test(no).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
-    condition.insert("q6", run_this_test);
+    condition.insert("q4", run_this_test);
+    condition.insert("q6", no);
     condition.insert("q11", no);
     condition.insert("q15", no);
     condition.insert("q33", no);
@@ -1879,6 +1881,18 @@ async fn main() {
         assert_eq!(
             q6_zigzag_conversion::Solution::convert(String::from("PAYPALISHIRING"), 4),
             String::from("PINALSIGYAHRPI")
+        );
+    }
+
+    if *condition.get("q4").unwrap_or(&false) {
+        println!("Question 4 - Median of Two Sorted Arrays");
+
+        assert_eq!(
+            q4_median_of_two_sorted_arrays::Solution::find_median_sorted_arrays(
+                vec![1, 2],
+                vec![3]
+            ),
+            6.5
         );
     }
 }
