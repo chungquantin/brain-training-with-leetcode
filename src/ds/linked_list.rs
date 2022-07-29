@@ -40,7 +40,6 @@ impl ListNode<i32> {
     pub fn info(&mut self) {
         let mut cur_node = self;
         loop {
-            println!("List node value: {:?}", cur_node.val);
             if cur_node.next.is_none() {
                 break;
             }
@@ -52,7 +51,7 @@ impl ListNode<i32> {
 #[test]
 fn test() {
     let linked_list = &mut ListNode::<i32>::default();
-    linked_list.init(vec![1,2,3,4,5]);
+    linked_list.init(vec![1, 2, 3, 4, 5]);
     linked_list.insert(6);
     linked_list.insert(7);
     linked_list.info();

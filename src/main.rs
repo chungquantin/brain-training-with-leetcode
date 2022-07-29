@@ -2,6 +2,7 @@
 use std::{collections::HashMap, vec};
 
 mod algo;
+mod ds;
 #[path = "./ds/linked_list.rs"]
 mod linked_list;
 mod others;
@@ -38,6 +39,7 @@ mod q287_find_duplicate;
 mod q300_length_of_lis;
 mod q303_sum_range;
 mod q304_range_sum_query_2D_immutable;
+mod q307_range_sum_query_mutable;
 mod q322_coin_change;
 mod q33_search;
 mod q344_reverse_string;
@@ -87,6 +89,7 @@ mod q986_interval_list_intersections;
 mod q994_oranges_rotting;
 
 pub use algo::*;
+pub use ds::*;
 use futures::future::join_all;
 pub use rand::Rng;
 
@@ -134,7 +137,7 @@ async fn main() {
     sort_algorithm_test(no).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
-    condition.insert("q4", run_this_test);
+    condition.insert("q4", no);
     condition.insert("q6", no);
     condition.insert("q11", no);
     condition.insert("q15", no);
@@ -175,6 +178,7 @@ async fn main() {
     condition.insert("q287", no);
     condition.insert("q303", no);
     condition.insert("q304", no);
+    condition.insert("q307", run_this_test);
     condition.insert("q322", no);
     condition.insert("q350", no);
     condition.insert("q383", no);
