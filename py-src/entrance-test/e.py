@@ -1,6 +1,3 @@
-from collections import deque
-
-
 def solution(l, target, el):
     ltr = [-1] * l
     i = 0
@@ -37,9 +34,9 @@ def solution(l, target, el):
     return ops
 
 
-print(solution(3, 1, [1, 0, 0]))
-print(solution(9, 3, [0, 1, 0, 1, 1, 1, 0, 0, 1]))
-print(solution(16, 2, [1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1]))
-print(solution(6, 3, [1, 0, 1, 0, 0, 0]))
-print(solution(5, 1, [0, 0, 1, 1, 0]))
-print(solution(6, 4, [1, 1, 1, 1, 1, 1]))
+t = int(input())
+while t > 0:
+    first = [int(el) for el in input().split()]
+    second = [int(el) for el in input().split()]
+    print(solution(first[0], first[1], second))
+    t -= 1

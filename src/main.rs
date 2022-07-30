@@ -19,6 +19,7 @@ mod q153_find_min;
 mod q155_min_stack;
 mod q15_three_sum;
 mod q162_find_peak_element;
+mod q174_dungeon_game;
 mod q189_rotate_array;
 mod q1963_min_swaps;
 mod q1_two_sum;
@@ -87,6 +88,7 @@ mod q973_k_closest;
 mod q977_sorted_squares;
 mod q986_interval_list_intersections;
 mod q994_oranges_rotting;
+mod test;
 
 pub use algo::*;
 pub use ds::*;
