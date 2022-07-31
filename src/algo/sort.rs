@@ -11,6 +11,7 @@ pub enum SortAlgorithmName {
  BubbleSort,
  InsertionSort,
  MergeSort,
+ CountingSort,
 }
 
 impl SortAlgorithm {
@@ -23,6 +24,7 @@ impl SortAlgorithm {
     SortAlgorithmName::BubbleSort => self.bubble_sort(nums),
     SortAlgorithmName::InsertionSort => self.insertion_sort(nums),
     SortAlgorithmName::MergeSort => self.merge_sort(nums),
+    SortAlgorithmName::CountingSort => self.counting_sort(nums),
    };
    let duration = start.elapsed();
    SortAlgorithm::print(output_shown, ind, duration, output);
@@ -75,6 +77,34 @@ impl SortAlgorithm {
   }
 
   nums.to_vec()
+ }
+
+ /// ## Counting Sort (unstable) - Time Complexity: O(N)
+ /// Counting sort is a very efficient algorithm but it can only be used when the
+ /// constant c is small enough, so that the array elements can be used as indices in
+ /// the bookkeeping array
+ /// - **Average Time Complexity: O(N)**
+ /// - Worst case scenario: `O(N)`
+ /// - Best case scenario `O(N)`
+ /// - Space Complexity: `O(N)`
+ pub fn counting_sort(self: &Self, input: Vec<i32>) -> Vec<i32> {
+  let min = *input.iter().min().unwrap(); // TC: O(n)
+  let max = *input.iter().max().unwrap(); // TC: O(n)
+  let mut bookkeeper = vec![0; (max - min) as usize]; // SC: O(m) with m is the gap between Max and Min
+  let mut answer = vec![]; // SC: O(n)
+
+  let mut i = 0;
+  // O(n)
+  while i < bookkeeper.len() {
+   if bookkeeper[i] != 0 {
+    answer.push(i as i32);
+    bookkeeper[i] -= 1;
+   } else {
+    i += 1;
+   }
+  }
+
+  answer
  }
 
  /// ## Merge Sort (stable) - Time Complexity: O(N*logN)

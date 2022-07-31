@@ -3,6 +3,7 @@ use std::{collections::HashMap, vec};
 
 mod algo;
 mod ds;
+mod icpc_example;
 #[path = "./ds/linked_list.rs"]
 mod linked_list;
 mod others;
@@ -118,6 +119,7 @@ async fn sort_algorithm_test(run_this_test: bool) {
             (SortAlgorithmName::BubbleSort, false),
             (SortAlgorithmName::InsertionSort, false),
             (SortAlgorithmName::MergeSort, false),
+            (SortAlgorithmName::CountingSort, false),
         ];
         let mut async_handle = vec![];
         for method in methods {
@@ -136,7 +138,7 @@ async fn sort_algorithm_test(run_this_test: bool) {
 async fn main() {
     let mut condition = HashMap::new();
     let (run_this_test, no) = (true, false);
-    sort_algorithm_test(no).await;
+    sort_algorithm_test(run_this_test).await;
     condition.insert("q1", no);
     condition.insert("q3", no);
     condition.insert("q4", no);
@@ -180,7 +182,7 @@ async fn main() {
     condition.insert("q287", no);
     condition.insert("q303", no);
     condition.insert("q304", no);
-    condition.insert("q307", run_this_test);
+    condition.insert("q307", no);
     condition.insert("q322", no);
     condition.insert("q350", no);
     condition.insert("q383", no);
