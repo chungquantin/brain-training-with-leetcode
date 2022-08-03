@@ -12,6 +12,7 @@ pub enum SortAlgorithmName {
  InsertionSort,
  MergeSort,
  CountingSort,
+ NativeSort,
 }
 
 impl SortAlgorithm {
@@ -25,6 +26,7 @@ impl SortAlgorithm {
     SortAlgorithmName::InsertionSort => self.insertion_sort(nums),
     SortAlgorithmName::MergeSort => self.merge_sort(nums),
     SortAlgorithmName::CountingSort => self.counting_sort(nums),
+    SortAlgorithmName::NativeSort => self.native_sort(nums),
    };
    let duration = start.elapsed();
    SortAlgorithm::print(output_shown, ind, duration, output);
@@ -105,6 +107,12 @@ impl SortAlgorithm {
   }
 
   answer
+ }
+
+ pub fn native_sort(self: &Self, input: Vec<i32>) -> Vec<i32> {
+  let mut dummy = input.to_vec();
+  dummy.sort();
+  dummy
  }
 
  /// ## Merge Sort (stable) - Time Complexity: O(N*logN)

@@ -107,19 +107,23 @@ async fn sort_algorithm_test(run_this_test: bool) {
     if run_this_test {
         let s = SortAlgorithm {
             inputs: vec![
-                gen_random(10, 0, 50),
-                gen_random(100, 0, 100),
-                gen_random(1000, 0, 1000),
-                gen_random(10000, 0, 100000),
+                // gen_random(10, 0, 50),
+                // gen_random(100, 0, 100),
+                // gen_random(1000, 0, 1000),
+                // gen_random(10000, 0, 100000),
+                // gen_random(100000, 0, 1000000),
+                // gen_random(1000000, 0, 10000000),
+                // gen_random(10000000, 0, 100000000),
             ],
             sort: 1,
         };
 
         let methods = vec![
-            (SortAlgorithmName::BubbleSort, false),
-            (SortAlgorithmName::InsertionSort, false),
+            // (SortAlgorithmName::BubbleSort, false),
+            // (SortAlgorithmName::InsertionSort, false),
             (SortAlgorithmName::MergeSort, false),
             (SortAlgorithmName::CountingSort, false),
+            (SortAlgorithmName::NativeSort, false),
         ];
         let mut async_handle = vec![];
         for method in methods {
