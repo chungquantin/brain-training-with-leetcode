@@ -23,6 +23,7 @@ mod q162_find_peak_element;
 mod q174_dungeon_game;
 mod q189_rotate_array;
 mod q1963_min_swaps;
+mod q198_house_robber;
 mod q1_two_sum;
 mod q200_number_of_islands;
 mod q207_can_finish;
@@ -174,6 +175,7 @@ async fn main() {
     condition.insert("q141", no);
     condition.insert("q150", no);
     condition.insert("q153", no);
+    condition.insert("q198", run_this_test);
     condition.insert("q200", no);
     condition.insert("q207", no);
     condition.insert("q209", no);
@@ -202,7 +204,7 @@ async fn main() {
     condition.insert("q695", no);
     condition.insert("q713", no);
     condition.insert("q733", no);
-    condition.insert("q739", run_this_test);
+    condition.insert("q739", no);
     condition.insert("q844", no);
     condition.insert("q862", no);
     condition.insert("q921", no);
@@ -1924,5 +1926,13 @@ async fn main() {
             q739_daily_temperatures::Solution::daily_temperatures(vec![30, 60, 90]),
             vec![1, 1, 0]
         );
+    }
+
+    if *condition.get("q198").unwrap_or(&false) {
+        println!("Question 198 - House Robber");
+        assert_eq!(q198_house_robber::Solution::rob(vec![0]), 0);
+        assert_eq!(q198_house_robber::Solution::rob(vec![3, 1, 1, 3]), 6);
+        assert_eq!(q198_house_robber::Solution::rob(vec![1, 2, 3, 1]), 4);
+        assert_eq!(q198_house_robber::Solution::rob(vec![2, 9, 5, 3, 1]), 12);
     }
 }
