@@ -75,6 +75,7 @@ mod q6_zigzag_conversion;
 mod q70_climb_stairs;
 mod q713_subarray_product_smaller_than_k;
 mod q733_flood_fill;
+mod q739_daily_temperatures;
 mod q76_minimum_window_substring;
 mod q78_subsets;
 mod q82_remove_duplicates_from_sorted_list_II;
@@ -201,6 +202,7 @@ async fn main() {
     condition.insert("q695", no);
     condition.insert("q713", no);
     condition.insert("q733", no);
+    condition.insert("q739", run_this_test);
     condition.insert("q844", no);
     condition.insert("q862", no);
     condition.insert("q921", no);
@@ -1905,6 +1907,22 @@ async fn main() {
                 vec![3]
             ),
             6.5
+        );
+    }
+
+    if *condition.get("q739").unwrap_or(&false) {
+        println!("Question 739 - Daily Temperatures");
+
+        assert_eq!(
+            q739_daily_temperatures::Solution::daily_temperatures(vec![
+                73, 74, 75, 71, 69, 72, 76, 73
+            ]),
+            vec![1, 1, 4, 2, 1, 1, 0, 0]
+        );
+
+        assert_eq!(
+            q739_daily_temperatures::Solution::daily_temperatures(vec![30, 60, 90]),
+            vec![1, 1, 0]
         );
     }
 }
